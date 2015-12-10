@@ -1,0 +1,12 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\core.o
+./release\ui.o
+./release\individual.o
+./release\people.o
+./release\sqlitedata.o
+./release\computer.o
+./release\machines.o
+./release\moc_mainwindow.o
+);

@@ -1,5 +1,5 @@
 /*#include "mainwindow.h"
-#include <QApplication>
+
 
 int main(int argc, char *argv[])
 {
@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     return a.exec();
 }*/
 
-
+#include <QApplication>
 #include <QCoreApplication>
 #include <QtSql>
 #include <iostream>
