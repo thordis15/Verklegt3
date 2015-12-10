@@ -9,6 +9,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->SelectingDatabase->addItem("<No database selected>");
     ui->SelectingDatabase->addItem("Scientists");
     ui->SelectingDatabase->addItem("Computers");
+
+    setTreeSci();
+
 }
 
 MainWindow::~MainWindow()
@@ -85,6 +88,79 @@ void MainWindow::sortSci(const string sorting)
 void MainWindow::sortComp(const string sorting)
 {
 
+}
+
+void MainWindow::setTreeSci()
+{
+    ui->treeWidget_sci->clear();
+    ui->treeWidget_sci->setColumnCount(3);
+    ui->treeWidget_sci->setHeaderLabels(QStringList() << "Name" << "Gender" << "Age");
+
+    People scientists = core.sortSciAlpabetFront();
+    for(int i = 0; i < scientists.getSize(); i++)
+    {
+        addTreeRootSci(scientists.getIndi(i));
+    }
+}
+
+void MainWindow::addTreeRootSci(Individual scientist)
+{
+    QString name, gender, age;
+
+    int id = scientist.getId();
+    Machines connected = core.getConnectedComp(id);
+    name = QString::fromStdString(scientist.getSurname() + ", " + scientist.getName());
+    if(scientist.getGender() == 'm')
+    {
+        gender = QString::fromStdString("Male");
+    }
+    else
+    {
+        gender = QString::fromStdString("Female");
+    }
+
+    if(scientist.getDeath() == 0)
+    {
+        age = QString::number(scientist.getBirth()) + " - Today";
+    }
+    else
+    {
+    age = QString::number(scientist.getBirth()) + " - " + QString::number(scientist.getDeath());
+    }
+
+    QTreeWidgetItem *treeItem = new QTreeWidgetItem(ui->treeWidget_sci);
+    treeItem->setText(0, name);
+    treeItem->setText(1, gender);
+    treeItem->setText(2, age);
+
+    for(int i = 0; i < connected.getSize(); i++)
+    {
+      addTreeChildSci(treeItem, connected.getComputer(i));
+    }
+}
+
+void MainWindow::addTreeChildSci(QTreeWidgetItem *parent, Computer computer)
+{
+    // QString name, QString type, QString built
+    QString name, type, built;
+    name = QString::fromStdString(computer.getName());
+    type = QString::fromStdString(computer.getType());
+
+    if(computer.getYear() == 0)
+    {
+        built = "Unbuilt";
+    }
+    else
+    {
+        built = QString::number(computer.getYear());
+    }
+
+    QTreeWidgetItem *treeItem = new QTreeWidgetItem();
+    treeItem->setText(0, name);
+    treeItem->setText(1, type);
+    treeItem->setText(2, built);
+
+    parent->addChild(treeItem);
 }
 
 void MainWindow::on_SelectingDatabase_activated(const QString &arg1)

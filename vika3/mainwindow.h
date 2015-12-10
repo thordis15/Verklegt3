@@ -1,11 +1,14 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+
 #include <iostream>
 #include <QMainWindow>
+#include <vector>
+#include <QTreeWidget>
 #include "core.h"
 #include "people.h"
 #include "machines.h"
-#include <vector>
+
 using namespace std;
 
 namespace Ui {
@@ -33,6 +36,13 @@ private:
     void createDropSortForComp();
     void sortSci(const string sorting);
     void sortComp(const string sorting);
+
+    void setTreeSci();
+    //void setTreecomp
+    void addTreeRootSci(Individual scientist);
+    void addTreeChildSci(QTreeWidgetItem *parent, Computer computer);
+    //void addTreeRootComp(QString name, QString type, QString built);
+    //void addTreeRootComp(QTreeWidgetItem *parent, QString name, QString gender, QString age);
 };
 
 #endif // MAINWINDOW_H

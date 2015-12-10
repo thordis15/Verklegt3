@@ -20,7 +20,10 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTabWidget>
 #include <QtWidgets/QToolBar>
+#include <QtWidgets/QTreeWidget>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -34,6 +37,12 @@ public:
     QListWidget *ViewList;
     QLabel *label;
     QComboBox *sortByDrop;
+    QTabWidget *tabWidget;
+    QWidget *tab_sci;
+    QVBoxLayout *verticalLayout;
+    QTreeWidget *treeWidget_sci;
+    QWidget *tab_comp;
+    QTreeWidget *treeWidget_comp;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -42,7 +51,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(536, 373);
+        MainWindow->resize(1188, 552);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         databaseSelectLabel = new QLabel(centralWidget);
@@ -60,10 +69,37 @@ public:
         sortByDrop = new QComboBox(centralWidget);
         sortByDrop->setObjectName(QStringLiteral("sortByDrop"));
         sortByDrop->setGeometry(QRect(100, 50, 161, 22));
+        tabWidget = new QTabWidget(centralWidget);
+        tabWidget->setObjectName(QStringLiteral("tabWidget"));
+        tabWidget->setGeometry(QRect(720, 20, 441, 401));
+        tab_sci = new QWidget();
+        tab_sci->setObjectName(QStringLiteral("tab_sci"));
+        verticalLayout = new QVBoxLayout(tab_sci);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        treeWidget_sci = new QTreeWidget(tab_sci);
+        QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
+        __qtreewidgetitem->setText(0, QStringLiteral("1"));
+        treeWidget_sci->setHeaderItem(__qtreewidgetitem);
+        treeWidget_sci->setObjectName(QStringLiteral("treeWidget_sci"));
+
+        verticalLayout->addWidget(treeWidget_sci);
+
+        tabWidget->addTab(tab_sci, QString());
+        tab_comp = new QWidget();
+        tab_comp->setObjectName(QStringLiteral("tab_comp"));
+        treeWidget_comp = new QTreeWidget(tab_comp);
+        QTreeWidgetItem *__qtreewidgetitem1 = new QTreeWidgetItem();
+        __qtreewidgetitem1->setText(0, QStringLiteral("1"));
+        treeWidget_comp->setHeaderItem(__qtreewidgetitem1);
+        treeWidget_comp->setObjectName(QStringLiteral("treeWidget_comp"));
+        treeWidget_comp->setGeometry(QRect(110, 100, 256, 192));
+        tabWidget->addTab(tab_comp, QString());
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 536, 21));
+        menuBar->setGeometry(QRect(0, 0, 1188, 26));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -74,6 +110,9 @@ public:
 
         retranslateUi(MainWindow);
 
+        tabWidget->setCurrentIndex(0);
+
+
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
 
@@ -82,6 +121,8 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
         databaseSelectLabel->setText(QApplication::translate("MainWindow", "Select a database:", 0));
         label->setText(QApplication::translate("MainWindow", "Sort by:", 0));
+        tabWidget->setTabText(tabWidget->indexOf(tab_sci), QApplication::translate("MainWindow", "Tab 1", 0));
+        tabWidget->setTabText(tabWidget->indexOf(tab_comp), QApplication::translate("MainWindow", "Tab 2", 0));
     } // retranslateUi
 
 };
