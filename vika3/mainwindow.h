@@ -38,7 +38,9 @@ private:
     void sortComp(const string sorting);
 
     void setTreeSci();
-    void setTreecomp();
+    void setTreeSci(People& scientists);
+    void setTreeComp();
+    void setTreeComp(Machines& computers);
     void addTreeRootSci(Individual scientist);
     void addTreeChildSci(QTreeWidgetItem *parent, Computer computer);
     void addTreeRootComp(Computer computer);

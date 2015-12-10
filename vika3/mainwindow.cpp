@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->SelectingDatabase->addItem("Computers");
 
     setTreeSci();
-    setTreecomp();
+    setTreeComp();
 
 }
 
@@ -105,13 +105,37 @@ void MainWindow::setTreeSci()
     }
 }
 
-void MainWindow::setTreecomp()
+void MainWindow::setTreeSci(People & scientists)
+{
+    ui->treeWidget_sci->clear();
+    ui->treeWidget_sci->setColumnCount(3);
+    ui->treeWidget_sci->setHeaderLabels(QStringList() << "Name" << "Gender" << "Age");
+
+    for(int i = 0; i < scientists.getSize(); i++)
+    {
+        addTreeRootSci(scientists.getIndi(i));
+    }
+}
+
+void MainWindow::setTreeComp()
 {
     ui->treeWidget_comp->clear();
     ui->treeWidget_comp->setColumnCount(3);
     ui->treeWidget_comp->setHeaderLabels(QStringList() << "Name" << "Type" << "Built");
 
     Machines computers = core.sortCompAlpabetFront();
+
+    for(int i = 0; i < computers.getSize(); i++)
+    {
+        addTreeRootComp(computers.getComputer(i));
+    }
+}
+
+void MainWindow::setTreeComp(Machines & computers)
+{
+    ui->treeWidget_comp->clear();
+    ui->treeWidget_comp->setColumnCount(3);
+    ui->treeWidget_comp->setHeaderLabels(QStringList() << "Name" << "Type" << "Built");
 
     for(int i = 0; i < computers.getSize(); i++)
     {
