@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->SelectingDatabase->addItem("Computers");
 
     setTreeSci();
+    setTreecomp();
 
 }
 
@@ -97,9 +98,24 @@ void MainWindow::setTreeSci()
     ui->treeWidget_sci->setHeaderLabels(QStringList() << "Name" << "Gender" << "Age");
 
     People scientists = core.sortSciAlpabetFront();
+
     for(int i = 0; i < scientists.getSize(); i++)
     {
         addTreeRootSci(scientists.getIndi(i));
+    }
+}
+
+void MainWindow::setTreecomp()
+{
+    ui->treeWidget_comp->clear();
+    ui->treeWidget_comp->setColumnCount(3);
+    ui->treeWidget_comp->setHeaderLabels(QStringList() << "Name" << "Type" << "Built");
+
+    Machines computers = core.sortCompAlpabetFront();
+
+    for(int i = 0; i < computers.getSize(); i++)
+    {
+        addTreeRootComp(computers.getComputer(i));
     }
 }
 
@@ -159,6 +175,68 @@ void MainWindow::addTreeChildSci(QTreeWidgetItem *parent, Computer computer)
     treeItem->setText(0, name);
     treeItem->setText(1, type);
     treeItem->setText(2, built);
+
+    parent->addChild(treeItem);
+}
+
+void MainWindow::addTreeRootComp(Computer computer)
+{
+    QString name, type, built;
+
+    int id = computer.getId();
+    People connected = core.getConnectedSci(id);
+
+    name = QString::fromStdString(computer.getName());
+    type = QString::fromStdString(computer.getType());
+
+    if(computer.getYear() == 0)
+    {
+        built = "Unbuilt";
+    }
+    else
+    {
+        built = QString::number(computer.getYear());
+    }
+
+    QTreeWidgetItem *treeItem = new QTreeWidgetItem(ui->treeWidget_comp);
+    treeItem->setText(0, name);
+    treeItem->setText(1, type);
+    treeItem->setText(2, built);
+
+    for(int i = 0; i < connected.getSize(); i++)
+    {
+      addTreeChildComp(treeItem, connected.getIndi(i));
+    }
+}
+
+void MainWindow::addTreeChildComp(QTreeWidgetItem *parent, Individual scientist)
+{
+    // QString name, QString type, QString built
+    QString name, gender, age;
+
+    name = QString::fromStdString(scientist.getSurname() + ", " + scientist.getName());
+    if(scientist.getGender() == 'm')
+    {
+        gender = QString::fromStdString("Male");
+    }
+    else
+    {
+        gender = QString::fromStdString("Female");
+    }
+
+    if(scientist.getDeath() == 0)
+    {
+        age = QString::number(scientist.getBirth()) + " - Today";
+    }
+    else
+    {
+    age = QString::number(scientist.getBirth()) + " - " + QString::number(scientist.getDeath());
+    }
+
+    QTreeWidgetItem *treeItem = new QTreeWidgetItem();
+    treeItem->setText(0, name);
+    treeItem->setText(1, gender);
+    treeItem->setText(2, age);
 
     parent->addChild(treeItem);
 }

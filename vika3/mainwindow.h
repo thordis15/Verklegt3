@@ -38,11 +38,11 @@ private:
     void sortComp(const string sorting);
 
     void setTreeSci();
-    //void setTreecomp
+    void setTreecomp();
     void addTreeRootSci(Individual scientist);
     void addTreeChildSci(QTreeWidgetItem *parent, Computer computer);
-    //void addTreeRootComp(QString name, QString type, QString built);
-    //void addTreeRootComp(QTreeWidgetItem *parent, QString name, QString gender, QString age);
+    void addTreeRootComp(Computer computer);
+    void addTreeChildComp(QTreeWidgetItem *parent, Individual scientist);
 };
 
 #endif // MAINWINDOW_H

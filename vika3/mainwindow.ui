@@ -76,11 +76,11 @@
       <x>720</x>
       <y>20</y>
       <width>441</width>
-      <height>401</height>
+      <height>411</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab_sci">
      <attribute name="title">
@@ -102,21 +102,17 @@
      <attribute name="title">
       <string>Tab 2</string>
      </attribute>
-     <widget class="QTreeWidget" name="treeWidget_comp">
-      <property name="geometry">
-       <rect>
-        <x>110</x>
-        <y>100</y>
-        <width>256</width>
-        <height>192</height>
-       </rect>
-      </property>
-      <column>
-       <property name="text">
-        <string notr="true">1</string>
-       </property>
-      </column>
-     </widget>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QTreeWidget" name="treeWidget_comp">
+        <column>
+         <property name="text">
+          <string notr="true">1</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </widget>
   </widget>
