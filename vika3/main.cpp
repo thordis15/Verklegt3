@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+/*#include "mainwindow.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
@@ -8,4 +8,20 @@ int main(int argc, char *argv[])
     w.show();
 
     return a.exec();
+}*/
+
+
+#include <QCoreApplication>
+#include <QtSql>
+#include <iostream>
+#include "ui.h"
+
+using namespace std;
+
+int main()
+{
+    UI ui;
+    ui.run();
+
+    return 0;
 }
