@@ -13,8 +13,23 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    core.cpp \
+    ui.cpp \
+    individual.cpp \
+    people.cpp \
+    sqlitedata.cpp \
+    computer.cpp \
+    machines.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    core.h \
+    globalconstants.h \
+    ui.h \
+    individual.h \
+    people.h \
+    sqlitedata.h \
+    computer.h \
+    machines.h
 
 FORMS    += mainwindow.ui
