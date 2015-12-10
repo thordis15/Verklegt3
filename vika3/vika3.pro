@@ -4,8 +4,9 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
-QT        += core sql
+QT       += core
+QT       += gui
+QT       += core sql
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = vika3

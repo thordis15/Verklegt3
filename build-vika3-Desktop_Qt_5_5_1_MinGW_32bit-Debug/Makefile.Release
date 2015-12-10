@@ -522,7 +522,10 @@ release/main.o: ../vika3/main.cpp C:/Qt/5.5/mingw492_32/include/QtWidgets/QAppli
 		../vika3/machines.h \
 		../vika3/computer.h \
 		../vika3/sqlitedata.h \
-		../vika3/globalconstants.h
+		../vika3/globalconstants.h \
+		../vika3/mainwindow.h \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/QMainWindow \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qmainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\vika3\main.cpp
 
 release/mainwindow.o: ../vika3/mainwindow.cpp ../vika3/mainwindow.h \

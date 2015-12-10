@@ -1763,8 +1763,7 @@ void UI::printScientistsConnections(People& sci)
 {
     cout << endl;
     cout << right << setw(3) << "Id" << "\t" << left << setw(30) << "Name" << setw(10) << "Gender" << "\tLife" << endl;
-
-    for(int i = 0; i < 74; i++)
+   for(int i = 0; i < 74; i++)
     {
         cout << "-";
     }
