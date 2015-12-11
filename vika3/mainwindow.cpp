@@ -75,8 +75,9 @@ void MainWindow::searchCompMenu(const string search)
 void MainWindow::setTreeSci()
 {
     ui->treeWidget_sci->clear();
-    ui->treeWidget_sci->setColumnCount(3);
-    ui->treeWidget_sci->setHeaderLabels(QStringList() << "Name" << "Gender" << "Age");
+    ui->treeWidget_sci->setColumnCount(4);
+    ui->treeWidget_sci->setHeaderLabels(QStringList() << "Name" << "Gender" << "Age" << "Id");
+    ui->treeWidget_sci->setColumnHidden(3, true);
 
     People scientists = core.sortSciAlpabetFront();
 
@@ -89,8 +90,9 @@ void MainWindow::setTreeSci()
 void MainWindow::setTreeSci(People & scientists)
 {
     ui->treeWidget_sci->clear();
-    ui->treeWidget_sci->setColumnCount(3);
-    ui->treeWidget_sci->setHeaderLabels(QStringList() << "Name" << "Gender" << "Age");
+    ui->treeWidget_sci->setColumnCount(4);
+    ui->treeWidget_sci->setHeaderLabels(QStringList() << "Name" << "Gender" << "Age" << "Id");
+    ui->treeWidget_sci->setColumnHidden(3, true);
 
     for(int i = 0; i < scientists.getSize(); i++)
     {
@@ -101,8 +103,9 @@ void MainWindow::setTreeSci(People & scientists)
 void MainWindow::setTreeComp()
 {
     ui->treeWidget_comp->clear();
-    ui->treeWidget_comp->setColumnCount(3);
-    ui->treeWidget_comp->setHeaderLabels(QStringList() << "Name" << "Type" << "Built");
+    ui->treeWidget_comp->setColumnCount(4);
+    ui->treeWidget_comp->setHeaderLabels(QStringList() << "Name" << "Type" << "Built" << "Id");
+    ui->treeWidget_comp->setColumnHidden(3, true);
 
     Machines computers = core.sortCompAlpabetFront();
 
@@ -115,8 +118,9 @@ void MainWindow::setTreeComp()
 void MainWindow::setTreeComp(Machines & computers)
 {
     ui->treeWidget_comp->clear();
-    ui->treeWidget_comp->setColumnCount(3);
-    ui->treeWidget_comp->setHeaderLabels(QStringList() << "Name" << "Type" << "Built");
+    ui->treeWidget_comp->setColumnCount(4);
+    ui->treeWidget_comp->setHeaderLabels(QStringList() << "Name" << "Type" << "Built" << "Id");
+    ui->treeWidget_comp->setColumnHidden(3, true);
 
     for(int i = 0; i < computers.getSize(); i++)
     {
@@ -149,10 +153,12 @@ void MainWindow::addTreeRootSci(Individual scientist)
     age = QString::number(scientist.getBirth()) + " - " + QString::number(scientist.getDeath());
     }
 
+    QString idNumber = QString::number(id);
     QTreeWidgetItem *treeItem = new QTreeWidgetItem(ui->treeWidget_sci);
     treeItem->setText(0, name);
     treeItem->setText(1, gender);
     treeItem->setText(2, age);
+    treeItem->setText(3, idNumber);
 
     for(int i = 0; i < connected.getSize(); i++)
     {
@@ -163,6 +169,7 @@ void MainWindow::addTreeRootSci(Individual scientist)
 void MainWindow::addTreeChildSci(QTreeWidgetItem *parent, Computer computer)
 {
     // QString name, QString type, QString built
+    int id = computer.getId();
     QString name, type, built;
     name = QString::fromStdString(computer.getName());
     type = QString::fromStdString(computer.getType());
@@ -176,10 +183,12 @@ void MainWindow::addTreeChildSci(QTreeWidgetItem *parent, Computer computer)
         built = QString::number(computer.getYear());
     }
 
+    QString idNumber = QString::number(id);
     QTreeWidgetItem *treeItem = new QTreeWidgetItem();
     treeItem->setText(0, name);
     treeItem->setText(1, type);
     treeItem->setText(2, built);
+    treeItem->setText(3, idNumber);
 
     parent->addChild(treeItem);
 }
@@ -203,10 +212,12 @@ void MainWindow::addTreeRootComp(Computer computer)
         built = QString::number(computer.getYear());
     }
 
+    QString idNumber = QString::number(id);
     QTreeWidgetItem *treeItem = new QTreeWidgetItem(ui->treeWidget_comp);
     treeItem->setText(0, name);
     treeItem->setText(1, type);
     treeItem->setText(2, built);
+    treeItem->setText(3, idNumber);
 
     for(int i = 0; i < connected.getSize(); i++)
     {
@@ -216,6 +227,7 @@ void MainWindow::addTreeRootComp(Computer computer)
 
 void MainWindow::addTreeChildComp(QTreeWidgetItem *parent, Individual scientist)
 {
+    int id = scientist.getId();
     // QString name, QString type, QString built
     QString name, gender, age;
 
@@ -238,10 +250,12 @@ void MainWindow::addTreeChildComp(QTreeWidgetItem *parent, Individual scientist)
     age = QString::number(scientist.getBirth()) + " - " + QString::number(scientist.getDeath());
     }
 
+    QString idNumber = QString::number(id);
     QTreeWidgetItem *treeItem = new QTreeWidgetItem();
     treeItem->setText(0, name);
     treeItem->setText(1, gender);
     treeItem->setText(2, age);
+    treeItem->setText(3, idNumber);
 
     parent->addChild(treeItem);
 }
