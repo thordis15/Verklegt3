@@ -12,6 +12,11 @@ MainWindow::MainWindow(QWidget *parent) :
     createDropSearchForComp();
     setTreeComp();
 
+    ui->Button_removeSci->setEnabled(false);
+    ui->Button_removeComp->setEnabled(false);
+
+
+
 }
 
 MainWindow::~MainWindow()
@@ -77,7 +82,7 @@ void MainWindow::setTreeSci()
     ui->treeWidget_sci->clear();
     ui->treeWidget_sci->setColumnCount(4);
     ui->treeWidget_sci->setHeaderLabels(QStringList() << "Name" << "Gender" << "Age" << "Id");
-    ui->treeWidget_sci->setColumnHidden(3, true);
+    //ui->treeWidget_sci->setColumnHidden(3, true);
 
     People scientists = core.sortSciAlpabetFront();
 
@@ -325,4 +330,88 @@ void MainWindow::on_Button_editSci_clicked()
     DialogEditSci editSciWindow;
     editSciWindow.setModal(true);
     editSciWindow.exec();
+}
+
+void MainWindow::on_Button_removeSci_clicked()
+{
+    ui->Button_removeSci->setEnabled(false);
+
+    QModelIndexList selectedList = ui->treeWidget_sci->selectionModel()->selectedRows();
+
+    int index;
+    for(int i = 0; i < selectedList.count(); i++)
+    {
+        //QMessageBox::information(this,"", QString::number(selectedList.at(i).row()));
+        index = selectedList.at(i).row();
+    }
+
+    //þetta er id-ið af manneskjunni í röð index
+    QString temp = ui->treeWidget_sci->model()->data(ui->treeWidget_sci->model()->index(index, 3)).toString();
+    int id = temp.toInt();
+
+    //messagebox
+    QMessageBox msgBox;
+    msgBox.setText("Removal of a scientist");
+    msgBox.setInformativeText("Are you sure you want to remove scientist with the id " + temp + "?");
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::Cancel);
+    //msgBox.setDefaultButton(QMessageBox::Cancel);  //maybe
+    int ret = msgBox.exec();
+
+    bool removed;   //taka seinna
+
+    switch (ret) {
+        case QMessageBox::Yes:      core.removeIndividual(id, removed);
+                                    setTreeSci();
+                                    break;
+        case QMessageBox::Cancel:   // Cancel was clicked
+                                    break;
+        default:                    // should never be reached
+                                    break;
+    }
+
+}
+
+void MainWindow::on_treeWidget_sci_itemSelectionChanged()
+{
+    ui->Button_removeSci->setEnabled(true);
+}
+
+void MainWindow::on_Button_removeComp_clicked()
+{
+    ui->Button_removeComp->setEnabled(false);
+    QModelIndexList selectedList = ui->treeWidget_comp->selectionModel()->selectedRows();
+
+    int index;
+    for(int i = 0; i < selectedList.count(); i++)
+    {
+        index = selectedList.at(i).row();
+    }
+
+    QString temp = ui->treeWidget_comp->model()->data(ui->treeWidget_comp->model()->index(index, 3)).toString();
+    int id = temp.toInt();
+    // The Id of the computer in row 'index' of table
+
+    QMessageBox msgBox;
+    msgBox.setText("Removal of a scomputer");
+    msgBox.setInformativeText("Are you sure you want to remove the computer with the id " + temp + "?");
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::Cancel);
+    int ret = msgBox.exec();
+    // Messagebox asks if user wants to remove or not
+
+    bool removed;
+
+    switch (ret) {
+        case QMessageBox::Yes:      core.removeComputer(id, removed);
+                                    setTreeComp();
+                                    break;
+        case QMessageBox::Cancel:   // Cancel was clicked
+                                    break;
+        default:                    // should never be reached
+                                    break;
+    }
+}
+
+void MainWindow::on_treeWidget_comp_itemSelectionChanged()
+{
+    ui->Button_removeComp->setEnabled(true);
 }

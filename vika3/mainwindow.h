@@ -5,6 +5,7 @@
 #include <QMainWindow>
 #include <vector>
 #include <QTreeWidget>
+#include <QMessageBox>
 #include "core.h"
 #include "people.h"
 #include "machines.h"
@@ -38,6 +39,14 @@ private slots:
     void on_Button_addSci_clicked();
 
     void on_Button_editSci_clicked();
+
+    void on_Button_removeSci_clicked();
+
+    void on_treeWidget_sci_itemSelectionChanged();
+
+    void on_Button_removeComp_clicked();
+
+    void on_treeWidget_comp_itemSelectionChanged();
 
 private:
     Ui::MainWindow *ui;
