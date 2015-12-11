@@ -8,5 +8,9 @@ INPUT(
 ./release\sqlitedata.o
 ./release\computer.o
 ./release\machines.o
+./release\dialogaddsci.o
+./release\dialogeditsci.o
 ./release\moc_mainwindow.o
+./release\moc_dialogaddsci.o
+./release\moc_dialogeditsci.o
 );
