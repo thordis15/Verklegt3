@@ -1,5 +1,5 @@
 #include "ui.h"
-
+/*
 UI::UI()
 {
 
@@ -1959,3 +1959,4 @@ void UI::clearScreen()
     system("cls||clear");
 }
 
+*/
