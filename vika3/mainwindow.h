@@ -35,6 +35,10 @@ private slots:
 
     void on_comboBox_searchComp_currentIndexChanged(const QString &arg1);
 
+    void on_Button_addSci_clicked();
+
+    void on_Button_editSci_clicked();
+
 private:
     Ui::MainWindow *ui;
     Core core;
