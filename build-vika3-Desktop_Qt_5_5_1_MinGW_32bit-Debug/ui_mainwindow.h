@@ -17,9 +17,10 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QListWidget>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QToolBar>
@@ -33,22 +34,34 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
+    QVBoxLayout *verticalLayout_3;
     QTabWidget *tabWidget;
     QWidget *tab_sci;
-    QVBoxLayout *verticalLayout;
+    QVBoxLayout *verticalLayout_5;
+    QVBoxLayout *verticalLayout_4;
+    QHBoxLayout *horizontalLayout_3;
+    QLabel *label_searchSci;
+    QComboBox *comboBox_searchSci;
+    QLineEdit *lineEdit_searchSci;
     QTreeWidget *treeWidget_sci;
+    QHBoxLayout *horizontalLayout_4;
+    QPushButton *Button_addSci;
+    QPushButton *Button_editSci;
+    QPushButton *Button_removeSci;
+    QPushButton *Button_addSciConnection;
     QWidget *tab_comp;
     QVBoxLayout *verticalLayout_2;
-    QTreeWidget *treeWidget_comp;
-    QWidget *widget;
-    QVBoxLayout *verticalLayout_3;
-    QHBoxLayout *horizontalLayout;
-    QLabel *databaseSelectLabel;
-    QComboBox *SelectingDatabase;
+    QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_2;
-    QLabel *label;
-    QComboBox *sortByDrop;
-    QListWidget *ViewList;
+    QLabel *label_searchComp;
+    QComboBox *comboBox_searchComp;
+    QLineEdit *lineEdit_searchComp;
+    QTreeWidget *treeWidget_comp;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *Button_addComp;
+    QPushButton *Button_editComp;
+    QPushButton *Button_removeComp;
+    QPushButton *Button_addCompConnection;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -57,25 +70,83 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(1188, 552);
+        MainWindow->resize(658, 568);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
+        verticalLayout_3 = new QVBoxLayout(centralWidget);
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
         tabWidget = new QTabWidget(centralWidget);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
-        tabWidget->setGeometry(QRect(720, 20, 441, 411));
         tab_sci = new QWidget();
         tab_sci->setObjectName(QStringLiteral("tab_sci"));
-        verticalLayout = new QVBoxLayout(tab_sci);
-        verticalLayout->setSpacing(6);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout_5 = new QVBoxLayout(tab_sci);
+        verticalLayout_5->setSpacing(6);
+        verticalLayout_5->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
+        verticalLayout_4 = new QVBoxLayout();
+        verticalLayout_4->setSpacing(6);
+        verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setSpacing(6);
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        label_searchSci = new QLabel(tab_sci);
+        label_searchSci->setObjectName(QStringLiteral("label_searchSci"));
+
+        horizontalLayout_3->addWidget(label_searchSci);
+
+        comboBox_searchSci = new QComboBox(tab_sci);
+        comboBox_searchSci->setObjectName(QStringLiteral("comboBox_searchSci"));
+
+        horizontalLayout_3->addWidget(comboBox_searchSci);
+
+
+        verticalLayout_4->addLayout(horizontalLayout_3);
+
+        lineEdit_searchSci = new QLineEdit(tab_sci);
+        lineEdit_searchSci->setObjectName(QStringLiteral("lineEdit_searchSci"));
+
+        verticalLayout_4->addWidget(lineEdit_searchSci);
+
         treeWidget_sci = new QTreeWidget(tab_sci);
         QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
         __qtreewidgetitem->setText(0, QStringLiteral("1"));
         treeWidget_sci->setHeaderItem(__qtreewidgetitem);
         treeWidget_sci->setObjectName(QStringLiteral("treeWidget_sci"));
+        treeWidget_sci->setAlternatingRowColors(true);
+        treeWidget_sci->setSortingEnabled(true);
 
-        verticalLayout->addWidget(treeWidget_sci);
+        verticalLayout_4->addWidget(treeWidget_sci);
+
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setSpacing(6);
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+        Button_addSci = new QPushButton(tab_sci);
+        Button_addSci->setObjectName(QStringLiteral("Button_addSci"));
+
+        horizontalLayout_4->addWidget(Button_addSci);
+
+        Button_editSci = new QPushButton(tab_sci);
+        Button_editSci->setObjectName(QStringLiteral("Button_editSci"));
+
+        horizontalLayout_4->addWidget(Button_editSci);
+
+        Button_removeSci = new QPushButton(tab_sci);
+        Button_removeSci->setObjectName(QStringLiteral("Button_removeSci"));
+
+        horizontalLayout_4->addWidget(Button_removeSci);
+
+        Button_addSciConnection = new QPushButton(tab_sci);
+        Button_addSciConnection->setObjectName(QStringLiteral("Button_addSciConnection"));
+
+        horizontalLayout_4->addWidget(Button_addSciConnection);
+
+
+        verticalLayout_4->addLayout(horizontalLayout_4);
+
+
+        verticalLayout_5->addLayout(verticalLayout_4);
 
         tabWidget->addTab(tab_sci, QString());
         tab_comp = new QWidget();
@@ -84,67 +155,81 @@ public:
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setSpacing(6);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        label_searchComp = new QLabel(tab_comp);
+        label_searchComp->setObjectName(QStringLiteral("label_searchComp"));
+
+        horizontalLayout_2->addWidget(label_searchComp);
+
+        comboBox_searchComp = new QComboBox(tab_comp);
+        comboBox_searchComp->setObjectName(QStringLiteral("comboBox_searchComp"));
+
+        horizontalLayout_2->addWidget(comboBox_searchComp);
+
+
+        verticalLayout->addLayout(horizontalLayout_2);
+
+        lineEdit_searchComp = new QLineEdit(tab_comp);
+        lineEdit_searchComp->setObjectName(QStringLiteral("lineEdit_searchComp"));
+
+        verticalLayout->addWidget(lineEdit_searchComp);
+
         treeWidget_comp = new QTreeWidget(tab_comp);
         QTreeWidgetItem *__qtreewidgetitem1 = new QTreeWidgetItem();
         __qtreewidgetitem1->setText(0, QStringLiteral("1"));
         treeWidget_comp->setHeaderItem(__qtreewidgetitem1);
         treeWidget_comp->setObjectName(QStringLiteral("treeWidget_comp"));
+        treeWidget_comp->setAlternatingRowColors(true);
+        treeWidget_comp->setSortingEnabled(true);
 
-        verticalLayout_2->addWidget(treeWidget_comp);
+        verticalLayout->addWidget(treeWidget_comp);
 
-        tabWidget->addTab(tab_comp, QString());
-        widget = new QWidget(centralWidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(10, 20, 258, 256));
-        verticalLayout_3 = new QVBoxLayout(widget);
-        verticalLayout_3->setSpacing(6);
-        verticalLayout_3->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
-        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        databaseSelectLabel = new QLabel(widget);
-        databaseSelectLabel->setObjectName(QStringLiteral("databaseSelectLabel"));
+        Button_addComp = new QPushButton(tab_comp);
+        Button_addComp->setObjectName(QStringLiteral("Button_addComp"));
 
-        horizontalLayout->addWidget(databaseSelectLabel);
+        horizontalLayout->addWidget(Button_addComp);
 
-        SelectingDatabase = new QComboBox(widget);
-        SelectingDatabase->setObjectName(QStringLiteral("SelectingDatabase"));
+        Button_editComp = new QPushButton(tab_comp);
+        Button_editComp->setObjectName(QStringLiteral("Button_editComp"));
 
-        horizontalLayout->addWidget(SelectingDatabase);
+        horizontalLayout->addWidget(Button_editComp);
 
+        Button_removeComp = new QPushButton(tab_comp);
+        Button_removeComp->setObjectName(QStringLiteral("Button_removeComp"));
 
-        verticalLayout_3->addLayout(horizontalLayout);
+        horizontalLayout->addWidget(Button_removeComp);
 
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setSpacing(6);
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        label = new QLabel(widget);
-        label->setObjectName(QStringLiteral("label"));
+        Button_addCompConnection = new QPushButton(tab_comp);
+        Button_addCompConnection->setObjectName(QStringLiteral("Button_addCompConnection"));
 
-        horizontalLayout_2->addWidget(label);
-
-        sortByDrop = new QComboBox(widget);
-        sortByDrop->setObjectName(QStringLiteral("sortByDrop"));
-
-        horizontalLayout_2->addWidget(sortByDrop);
+        horizontalLayout->addWidget(Button_addCompConnection);
 
 
-        verticalLayout_3->addLayout(horizontalLayout_2);
+        verticalLayout->addLayout(horizontalLayout);
 
-        ViewList = new QListWidget(widget);
-        ViewList->setObjectName(QStringLiteral("ViewList"));
 
-        verticalLayout_3->addWidget(ViewList);
+        verticalLayout_2->addLayout(verticalLayout);
+
+        tabWidget->addTab(tab_comp, QString());
+
+        verticalLayout_3->addWidget(tabWidget);
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1188, 26));
+        menuBar->setGeometry(QRect(0, 0, 658, 26));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
+        mainToolBar->setMovable(false);
         MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
@@ -152,7 +237,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -161,10 +246,18 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
-        tabWidget->setTabText(tabWidget->indexOf(tab_sci), QApplication::translate("MainWindow", "Tab 1", 0));
-        tabWidget->setTabText(tabWidget->indexOf(tab_comp), QApplication::translate("MainWindow", "Tab 2", 0));
-        databaseSelectLabel->setText(QApplication::translate("MainWindow", "Select a database:", 0));
-        label->setText(QApplication::translate("MainWindow", "Sort by:", 0));
+        label_searchSci->setText(QApplication::translate("MainWindow", "TextLabel", 0));
+        Button_addSci->setText(QApplication::translate("MainWindow", "Add Scientist", 0));
+        Button_editSci->setText(QApplication::translate("MainWindow", "Edit Scientist", 0));
+        Button_removeSci->setText(QApplication::translate("MainWindow", "Remove", 0));
+        Button_addSciConnection->setText(QApplication::translate("MainWindow", "Add Connection", 0));
+        tabWidget->setTabText(tabWidget->indexOf(tab_sci), QApplication::translate("MainWindow", "Scientists", 0));
+        label_searchComp->setText(QApplication::translate("MainWindow", "TextLabel", 0));
+        Button_addComp->setText(QApplication::translate("MainWindow", "Add Computer", 0));
+        Button_editComp->setText(QApplication::translate("MainWindow", "Edit Computer", 0));
+        Button_removeComp->setText(QApplication::translate("MainWindow", "Remove", 0));
+        Button_addCompConnection->setText(QApplication::translate("MainWindow", "Add Connection", 0));
+        tabWidget->setTabText(tabWidget->indexOf(tab_comp), QApplication::translate("MainWindow", "Computers", 0));
     } // retranslateUi
 
 };
