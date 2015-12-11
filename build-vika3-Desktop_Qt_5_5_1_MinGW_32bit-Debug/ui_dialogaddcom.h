@@ -31,11 +31,11 @@ public:
     QVBoxLayout *verticalLayout_2;
     QLabel *label_addCom;
     QHBoxLayout *horizontalLayout_11;
-    QLabel *label_addName_2;
-    QLineEdit *lineEdit_addGName;
+    QLabel *label_addCName;
+    QLineEdit *lineEdit_addComName;
     QHBoxLayout *horizontalLayout_7;
     QLabel *label_addName;
-    QLineEdit *lineEdit_addName;
+    QLineEdit *lineEdit_addTypeName;
     QCheckBox *checkBox_created;
     QHBoxLayout *horizontalLayout_8;
     QLabel *label_creationYear;
@@ -62,15 +62,15 @@ public:
 
         horizontalLayout_11 = new QHBoxLayout();
         horizontalLayout_11->setObjectName(QStringLiteral("horizontalLayout_11"));
-        label_addName_2 = new QLabel(DialogAddCom);
-        label_addName_2->setObjectName(QStringLiteral("label_addName_2"));
+        label_addCName = new QLabel(DialogAddCom);
+        label_addCName->setObjectName(QStringLiteral("label_addCName"));
 
-        horizontalLayout_11->addWidget(label_addName_2);
+        horizontalLayout_11->addWidget(label_addCName);
 
-        lineEdit_addGName = new QLineEdit(DialogAddCom);
-        lineEdit_addGName->setObjectName(QStringLiteral("lineEdit_addGName"));
+        lineEdit_addComName = new QLineEdit(DialogAddCom);
+        lineEdit_addComName->setObjectName(QStringLiteral("lineEdit_addComName"));
 
-        horizontalLayout_11->addWidget(lineEdit_addGName);
+        horizontalLayout_11->addWidget(lineEdit_addComName);
 
 
         verticalLayout_2->addLayout(horizontalLayout_11);
@@ -82,10 +82,10 @@ public:
 
         horizontalLayout_7->addWidget(label_addName);
 
-        lineEdit_addName = new QLineEdit(DialogAddCom);
-        lineEdit_addName->setObjectName(QStringLiteral("lineEdit_addName"));
+        lineEdit_addTypeName = new QLineEdit(DialogAddCom);
+        lineEdit_addTypeName->setObjectName(QStringLiteral("lineEdit_addTypeName"));
 
-        horizontalLayout_7->addWidget(lineEdit_addName);
+        horizontalLayout_7->addWidget(lineEdit_addTypeName);
 
 
         verticalLayout_2->addLayout(horizontalLayout_7);
@@ -145,7 +145,7 @@ public:
     {
         DialogAddCom->setWindowTitle(QApplication::translate("DialogAddCom", "Dialog", 0));
         label_addCom->setText(QApplication::translate("DialogAddCom", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">Add computer</span></p></body></html>", 0));
-        label_addName_2->setText(QApplication::translate("DialogAddCom", "Name:                 ", 0));
+        label_addCName->setText(QApplication::translate("DialogAddCom", "Name:                 ", 0));
         label_addName->setText(QApplication::translate("DialogAddCom", "Type:                  ", 0));
         checkBox_created->setText(QApplication::translate("DialogAddCom", "Created?", 0));
         label_creationYear->setText(QApplication::translate("DialogAddCom", "Year of creation:  ", 0));

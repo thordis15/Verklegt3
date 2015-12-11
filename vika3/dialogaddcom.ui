@@ -30,14 +30,14 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_11">
      <item>
-      <widget class="QLabel" name="label_addName_2">
+      <widget class="QLabel" name="label_addCName">
        <property name="text">
         <string>Name:                 </string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_addGName"/>
+      <widget class="QLineEdit" name="lineEdit_addComName"/>
      </item>
     </layout>
    </item>
@@ -51,7 +51,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_addName"/>
+      <widget class="QLineEdit" name="lineEdit_addTypeName"/>
      </item>
     </layout>
    </item>
@@ -121,18 +121,8 @@
     </layout>
    </item>
   </layout>
-  <zorder>lineEdit_surname</zorder>
-  <zorder>label_surname</zorder>
-  <zorder>label_death</zorder>
-  <zorder>horizontalSpacer_3</zorder>
-  <zorder>horizontalSpacer_2</zorder>
-  <zorder>lineEdit_yearBirth</zorder>
-  <zorder>layoutWidget</zorder>
   <zorder>checkBox_created</zorder>
-  <zorder>layoutWidget_2</zorder>
   <zorder>label_addCom</zorder>
-  <zorder>layoutWidget_5</zorder>
-  <zorder>layoutWidget_6</zorder>
  </widget>
  <resources/>
  <connections/>

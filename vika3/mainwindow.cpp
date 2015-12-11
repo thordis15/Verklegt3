@@ -343,6 +343,7 @@ void MainWindow::on_Button_addComp_clicked()
     DialogAddCom addComWindow;
     addComWindow.setModal(true);
     addComWindow.exec();
+    setTreeComp();
 }
 void MainWindow::on_Button_addCompConnection_clicked()
 {

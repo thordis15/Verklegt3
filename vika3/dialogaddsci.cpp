@@ -71,5 +71,4 @@ void DialogAddSci::on_checkBox_alive_clicked(bool checked)
         temp = true;
     }
     ui->lineEdit_addDeathYear->setEnabled(temp);
-
 }
