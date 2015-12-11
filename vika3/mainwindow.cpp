@@ -336,38 +336,49 @@ void MainWindow::on_Button_removeSci_clicked()
 {
     ui->Button_removeSci->setEnabled(false);
 
-    QModelIndexList selectedList = ui->treeWidget_sci->selectionModel()->selectedRows();
-
-    int index;
-    for(int i = 0; i < selectedList.count(); i++)
+    if(!ui->treeWidget_sci->currentItem()->parent())
     {
-        //QMessageBox::information(this,"", QString::number(selectedList.at(i).row()));
-        index = selectedList.at(i).row();
+        qDebug() << QString("valdir vísindamann, parent");
+        QModelIndexList selectedList = ui->treeWidget_sci->selectionModel()->selectedRows();
+
+        int index;
+        for(int i = 0; i < selectedList.count(); i++)
+        {
+            //QMessageBox::information(this,"", QString::number(selectedList.at(i).row()));
+            index = selectedList.at(i).row();
+        }
+
+        //þetta er id-ið af manneskjunni í röð index
+        QString temp = ui->treeWidget_sci->model()->data(ui->treeWidget_sci->model()->index(index, 3)).toString();
+        int id = temp.toInt();
+
+        //messagebox
+        QMessageBox msgBox;
+        msgBox.setText("Removal of a scientist");
+        msgBox.setInformativeText("Are you sure you want to remove scientist with the id " + temp + "?");
+        msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::Cancel);
+        //msgBox.setDefaultButton(QMessageBox::Cancel);  //maybe
+        int ret = msgBox.exec();
+
+        bool removed;   //taka seinna
+
+        switch (ret) {
+            case QMessageBox::Yes:      core.removeIndividual(id, removed);
+                                        setTreeSci();
+                                        break;
+            case QMessageBox::Cancel:   // Cancel was clicked
+                                        break;
+            default:                    // should never be reached
+                                        break;
+        }
+
+    }
+    else
+    {
+        qDebug() << QString("valdir tölvu, child");
+        //ui->treeWidget_sci->currentItem()->
     }
 
-    //þetta er id-ið af manneskjunni í röð index
-    QString temp = ui->treeWidget_sci->model()->data(ui->treeWidget_sci->model()->index(index, 3)).toString();
-    int id = temp.toInt();
-
-    //messagebox
-    QMessageBox msgBox;
-    msgBox.setText("Removal of a scientist");
-    msgBox.setInformativeText("Are you sure you want to remove scientist with the id " + temp + "?");
-    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::Cancel);
-    //msgBox.setDefaultButton(QMessageBox::Cancel);  //maybe
-    int ret = msgBox.exec();
-
-    bool removed;   //taka seinna
-
-    switch (ret) {
-        case QMessageBox::Yes:      core.removeIndividual(id, removed);
-                                    setTreeSci();
-                                    break;
-        case QMessageBox::Cancel:   // Cancel was clicked
-                                    break;
-        default:                    // should never be reached
-                                    break;
-    }
 
 }
 

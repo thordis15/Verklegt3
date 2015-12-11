@@ -6,6 +6,7 @@
 #include <vector>
 #include <QTreeWidget>
 #include <QMessageBox>
+#include <QDebug>
 #include "core.h"
 #include "people.h"
 #include "machines.h"
