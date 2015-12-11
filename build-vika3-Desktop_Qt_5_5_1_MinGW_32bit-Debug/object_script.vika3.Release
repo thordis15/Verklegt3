@@ -10,7 +10,9 @@ INPUT(
 ./release\machines.o
 ./release\dialogaddsci.o
 ./release\dialogeditsci.o
+./release\dialogeditcom.o
 ./release\moc_mainwindow.o
 ./release\moc_dialogaddsci.o
 ./release\moc_dialogeditsci.o
+./release\moc_dialogeditcom.o
 );
