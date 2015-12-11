@@ -54,10 +54,16 @@ SOURCES       = ..\vika3\main.cpp \
 		..\vika3\machines.cpp \
 		..\vika3\dialogaddsci.cpp \
 		..\vika3\dialogeditsci.cpp \
-		..\vika3\dialogaddcom.cpp debug\moc_mainwindow.cpp \
+		..\vika3\dialogeditcom.cpp \
+		..\vika3\dialogaddcom.cpp \
+		..\vika3\dialogaddsciconnection.cpp \
+		..\vika3\dialogaddcompconnection.cpp debug\moc_mainwindow.cpp \
 		debug\moc_dialogaddsci.cpp \
 		debug\moc_dialogeditsci.cpp \
-		debug\moc_dialogaddcom.cpp
+		debug\moc_dialogeditcom.cpp \
+		debug\moc_dialogaddcom.cpp \
+		debug\moc_dialogaddsciconnection.cpp \
+		debug\moc_dialogaddcompconnection.cpp
 OBJECTS       = debug/main.o \
 		debug/mainwindow.o \
 		debug/core.o \
@@ -69,11 +75,17 @@ OBJECTS       = debug/main.o \
 		debug/machines.o \
 		debug/dialogaddsci.o \
 		debug/dialogeditsci.o \
+		debug/dialogeditcom.o \
 		debug/dialogaddcom.o \
+		debug/dialogaddsciconnection.o \
+		debug/dialogaddcompconnection.o \
 		debug/moc_mainwindow.o \
 		debug/moc_dialogaddsci.o \
 		debug/moc_dialogeditsci.o \
-		debug/moc_dialogaddcom.o
+		debug/moc_dialogeditcom.o \
+		debug/moc_dialogaddcom.o \
+		debug/moc_dialogaddsciconnection.o \
+		debug/moc_dialogaddcompconnection.o
 
 DIST          =  ..\vika3\mainwindow.h \
 		..\vika3\core.h \
@@ -86,7 +98,10 @@ DIST          =  ..\vika3\mainwindow.h \
 		..\vika3\machines.h \
 		..\vika3\dialogaddsci.h \
 		..\vika3\dialogeditsci.h \
-		..\vika3\dialogaddcom.h ..\vika3\main.cpp \
+		..\vika3\dialogeditcom.h \
+		..\vika3\dialogaddcom.h \
+		..\vika3\dialogaddsciconnection.h \
+		..\vika3\dialogaddcompconnection.h ..\vika3\main.cpp \
 		..\vika3\mainwindow.cpp \
 		..\vika3\core.cpp \
 		..\vika3\ui.cpp \
@@ -97,7 +112,10 @@ DIST          =  ..\vika3\mainwindow.h \
 		..\vika3\machines.cpp \
 		..\vika3\dialogaddsci.cpp \
 		..\vika3\dialogeditsci.cpp \
-		..\vika3\dialogaddcom.cpp
+		..\vika3\dialogeditcom.cpp \
+		..\vika3\dialogaddcom.cpp \
+		..\vika3\dialogaddsciconnection.cpp \
+		..\vika3\dialogaddcompconnection.cpp
 QMAKE_TARGET  = vika3
 DESTDIR        = debug\ #avoid trailing-slash linebreak
 TARGET         = vika3.exe
@@ -124,7 +142,7 @@ DESTDIR_TARGET = debug\vika3.exe
 first: all
 all: Makefile.Debug  $(DESTDIR_TARGET)
 
-$(DESTDIR_TARGET): ui_mainwindow.h ui_dialogaddsci.h ui_dialogeditsci.h ui_dialogaddcom.h $(OBJECTS) 
+$(DESTDIR_TARGET): ui_mainwindow.h ui_dialogaddsci.h ui_dialogeditsci.h ui_dialogeditcom.h ui_dialogaddcom.h ui_dialogaddsciconnection.h ui_dialogaddcompconnection.h $(OBJECTS) 
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) object_script.vika3.Debug  $(LIBS)
 
 qmake: FORCE
@@ -136,7 +154,7 @@ dist:
 	$(ZIP) vika3.zip $(SOURCES) $(DIST) ..\vika3\vika3.pro "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\spec_pre.prf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\qdevice.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\device_config.prf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\qconfig.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_3dcollision.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_3dcollision_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_3dcore.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_3dcore_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_3dinput.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_3dinput_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_3dlogic.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_3dlogic_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_3dquick.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_3dquick_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_3dquickrenderer.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_3dquickrenderer_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_3drenderer.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_3drenderer_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_axbase.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_axbase_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_axcontainer.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_axcontainer_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_axserver.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_axserver_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_bluetooth.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_bluetooth_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_bootstrap_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_clucene_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_concurrent.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_concurrent_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_core.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_core_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_dbus.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_dbus_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_declarative.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_declarative_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_designer.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_designer_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_designercomponents_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_enginio.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_enginio_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_gui.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_gui_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_help.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_help_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_location.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_location_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_multimedia.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_multimedia_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_multimediawidgets.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_network.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_network_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_nfc.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_nfc_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_opengl.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_opengl_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_openglextensions.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_openglextensions_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_platformsupport_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_positioning.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_positioning_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_printsupport.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_printsupport_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_qml.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_qml_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_qmldevtools_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_qmltest.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_qmltest_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_quick.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_quick_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_quickparticles_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_quickwidgets.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_quickwidgets_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_script.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_script_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_scripttools.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_scripttools_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_sensors.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_sensors_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_serialport.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_serialport_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_sql.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_sql_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_svg.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_svg_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_testlib.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_testlib_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_uiplugin.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_uitools.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_uitools_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_webchannel.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_webchannel_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_webkit.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_webkit_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_webkitwidgets.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_webkitwidgets_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_websockets.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_websockets_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_widgets.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_widgets_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_winextras.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_winextras_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_xml.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_xml_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_xmlpatterns.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\qt_functions.prf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\qt_config.prf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\win32\qt_config.prf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\win32-g++\qmake.conf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\spec_post.prf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\exclusive_builds.prf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\default_pre.prf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\win32\default_pre.prf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\resolve_config.prf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\exclusive_builds_post.prf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\default_post.prf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\build_pass.prf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\win32\rtti.prf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\precompile_header.prf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\warn_on.prf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\qt.prf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\resources.prf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\moc.prf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\win32\opengl.prf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\uic.prf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\win32\windows.prf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\testcase_targets.prf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\exceptions.prf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\yacc.prf" "C:\Program Files (x86)\QQTT\5.5\mingw492_32\mkspecs\features\lex.prf" ..\vika3\vika3.pro "C:/Program Files (x86)/QQTT/5.5/mingw492_32/lib/qtmaind.prl" "C:/Program Files (x86)/QQTT/5.5/mingw492_32/lib/Qt5Widgetsd.prl" "C:/Program Files (x86)/QQTT/5.5/mingw492_32/lib/Qt5Guid.prl" "C:/Program Files (x86)/QQTT/5.5/mingw492_32/lib/Qt5Sqld.prl" "C:/Program Files (x86)/QQTT/5.5/mingw492_32/lib/Qt5Cored.prl"  NO_PCH_SOURCES RESOURCES HEADERS SOURCES OBJECTIVE_SOURCES FORMS YACCSOURCES YACCSOURCES LEXSOURCES 
 
 clean: compiler_clean 
-	-$(DEL_FILE) debug\main.o debug\mainwindow.o debug\core.o debug\ui.o debug\individual.o debug\people.o debug\sqlitedata.o debug\computer.o debug\machines.o debug\dialogaddsci.o debug\dialogeditsci.o debug\dialogaddcom.o debug\moc_mainwindow.o debug\moc_dialogaddsci.o debug\moc_dialogeditsci.o debug\moc_dialogaddcom.o
+	-$(DEL_FILE) debug\main.o debug\mainwindow.o debug\core.o debug\ui.o debug\individual.o debug\people.o debug\sqlitedata.o debug\computer.o debug\machines.o debug\dialogaddsci.o debug\dialogeditsci.o debug\dialogeditcom.o debug\dialogaddcom.o debug\dialogaddsciconnection.o debug\dialogaddcompconnection.o debug\moc_mainwindow.o debug\moc_dialogaddsci.o debug\moc_dialogeditsci.o debug\moc_dialogeditcom.o debug\moc_dialogaddcom.o debug\moc_dialogaddsciconnection.o debug\moc_dialogaddcompconnection.o
 
 distclean: clean 
 	-$(DEL_FILE) $(DESTDIR_TARGET)
@@ -152,9 +170,9 @@ compiler_no_pch_compiler_make_all:
 compiler_no_pch_compiler_clean:
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: debug/moc_mainwindow.cpp debug/moc_dialogaddsci.cpp debug/moc_dialogeditsci.cpp debug/moc_dialogaddcom.cpp
+compiler_moc_header_make_all: debug/moc_mainwindow.cpp debug/moc_dialogaddsci.cpp debug/moc_dialogeditsci.cpp debug/moc_dialogeditcom.cpp debug/moc_dialogaddcom.cpp debug/moc_dialogaddsciconnection.cpp debug/moc_dialogaddcompconnection.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) debug\moc_mainwindow.cpp debug\moc_dialogaddsci.cpp debug\moc_dialogeditsci.cpp debug\moc_dialogaddcom.cpp
+	-$(DEL_FILE) debug\moc_mainwindow.cpp debug\moc_dialogaddsci.cpp debug\moc_dialogeditsci.cpp debug\moc_dialogeditcom.cpp debug\moc_dialogaddcom.cpp debug\moc_dialogaddsciconnection.cpp debug\moc_dialogaddcompconnection.cpp
 debug/moc_mainwindow.cpp: C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QMainWindow \
 		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qmainwindow.h \
 		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qwidget.h \
@@ -279,6 +297,9 @@ debug/moc_mainwindow.cpp: C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/
 		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qtabbar.h \
 		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qrubberband.h \
 		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qtreewidgetitemiterator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QMessageBox \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qmessagebox.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qdialog.h \
 		../vika3/core.h \
 		../vika3/people.h \
 		../vika3/individual.h \
@@ -777,6 +798,112 @@ debug/moc_dialogeditsci.cpp: C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/inclu
 		../vika3/dialogeditsci.h
 	"C:\Program Files (x86)\QQTT\5.5\mingw492_32\bin\moc.exe" $(DEFINES) -D__GNUC__ -DWIN32 -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/mkspecs/win32-g++" -IC:/Users/LethalValdi/Desktop/Clone/Verklegt3/vika3 -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include" -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include/QtWidgets" -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include/QtGui" -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include/QtANGLE" -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include/QtSql" -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include/QtCore" -I. ..\vika3\dialogeditsci.h -o debug\moc_dialogeditsci.cpp
 
+debug/moc_dialogeditcom.cpp: C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QDialog \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qdialog.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qwidget.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qwindowdefs.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qglobal.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qconfig.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfeatures.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsystemdetection.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qprocessordetection.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcompilerdetection.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtypeinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtypetraits.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsysinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlogging.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qflags.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbasicatomic.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_bootstrap.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qgenericatomic.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_cxx11.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_gcc.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_msvc.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_armv7.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_armv6.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_armv5.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_ia64.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_mips.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_x86.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_unix.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qglobalstatic.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmutex.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qnumeric.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobjectdefs.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qnamespace.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobjectdefs_impl.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qwindowdefs_win.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobject.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstring.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qchar.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbytearray.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qrefcount.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qarraydata.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstringbuilder.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlist.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qalgorithms.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qiterator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbytearraylist.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstringlist.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qregexp.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstringmatcher.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcoreevent.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qscopedpointer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmetatype.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qvarlengtharray.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcontainerfwd.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qisenum.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobject_impl.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmargins.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpaintdevice.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qrect.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsize.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpoint.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpalette.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qcolor.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qrgb.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qbrush.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpair.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qvector.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qmatrix.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpolygon.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qregion.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qdatastream.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qiodevice.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qline.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qtransform.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpainterpath.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qimage.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpixelformat.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpixmap.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsharedpointer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qshareddata.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qhash.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsharedpointer_impl.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qfont.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qfontmetrics.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qfontinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qsizepolicy.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qcursor.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qkeysequence.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qevent.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qvariant.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmap.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qdebug.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtextstream.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlocale.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qset.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcontiguouscache.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qurl.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qurlquery.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfile.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfiledevice.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qvector2d.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qtouchdevice.h \
+		../vika3/dialogeditcom.h
+	"C:\Program Files (x86)\QQTT\5.5\mingw492_32\bin\moc.exe" $(DEFINES) -D__GNUC__ -DWIN32 -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/mkspecs/win32-g++" -IC:/Users/LethalValdi/Desktop/Clone/Verklegt3/vika3 -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include" -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include/QtWidgets" -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include/QtGui" -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include/QtANGLE" -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include/QtSql" -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include/QtCore" -I. ..\vika3\dialogeditcom.h -o debug\moc_dialogeditcom.cpp
+
 debug/moc_dialogaddcom.cpp: C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QDialog \
 		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qdialog.h \
 		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qwidget.h \
@@ -883,11 +1010,524 @@ debug/moc_dialogaddcom.cpp: C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/includ
 		../vika3/dialogaddcom.h
 	"C:\Program Files (x86)\QQTT\5.5\mingw492_32\bin\moc.exe" $(DEFINES) -D__GNUC__ -DWIN32 -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/mkspecs/win32-g++" -IC:/Users/LethalValdi/Desktop/Clone/Verklegt3/vika3 -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include" -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include/QtWidgets" -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include/QtGui" -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include/QtANGLE" -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include/QtSql" -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include/QtCore" -I. ..\vika3\dialogaddcom.h -o debug\moc_dialogaddcom.cpp
 
+debug/moc_dialogaddsciconnection.cpp: C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QDialog \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qdialog.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qwidget.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qwindowdefs.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qglobal.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qconfig.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfeatures.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsystemdetection.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qprocessordetection.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcompilerdetection.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtypeinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtypetraits.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsysinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlogging.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qflags.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbasicatomic.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_bootstrap.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qgenericatomic.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_cxx11.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_gcc.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_msvc.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_armv7.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_armv6.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_armv5.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_ia64.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_mips.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_x86.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_unix.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qglobalstatic.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmutex.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qnumeric.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobjectdefs.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qnamespace.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobjectdefs_impl.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qwindowdefs_win.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobject.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstring.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qchar.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbytearray.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qrefcount.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qarraydata.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstringbuilder.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlist.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qalgorithms.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qiterator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbytearraylist.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstringlist.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qregexp.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstringmatcher.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcoreevent.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qscopedpointer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmetatype.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qvarlengtharray.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcontainerfwd.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qisenum.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobject_impl.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmargins.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpaintdevice.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qrect.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsize.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpoint.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpalette.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qcolor.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qrgb.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qbrush.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpair.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qvector.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qmatrix.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpolygon.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qregion.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qdatastream.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qiodevice.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qline.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qtransform.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpainterpath.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qimage.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpixelformat.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpixmap.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsharedpointer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qshareddata.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qhash.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsharedpointer_impl.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qfont.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qfontmetrics.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qfontinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qsizepolicy.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qcursor.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qkeysequence.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qevent.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qvariant.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmap.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qdebug.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtextstream.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlocale.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qset.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcontiguouscache.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qurl.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qurlquery.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfile.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfiledevice.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qvector2d.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qtouchdevice.h \
+		../vika3/core.h \
+		../vika3/people.h \
+		../vika3/individual.h \
+		../vika3/machines.h \
+		../vika3/computer.h \
+		../vika3/sqlitedata.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/QtSql \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/QtSqlDepends \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/QtCore \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/QtCoreDepends \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstractanimation.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qanimationgroup.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qparallelanimationgroup.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpauseanimation.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpropertyanimation.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qvariantanimation.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qeasingcurve.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsequentialanimationgroup.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtextcodec.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qendian.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlibraryinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qdatetime.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbuffer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qdir.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfileinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qdiriterator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfileselector.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/QObject \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/QStringList \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfilesystemwatcher.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlockfile.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qloggingcategory.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qprocess.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qresource.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsavefile.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsettings.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstandardpaths.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstorageinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtemporarydir.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/QScopedPointer \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtemporaryfile.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstractitemmodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstractproxymodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qidentityproxymodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qitemselectionmodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsortfilterproxymodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstringlistmodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qjsonarray.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qjsonvalue.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qjsondocument.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qjsonobject.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstracteventdispatcher.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qeventloop.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstractnativeeventfilter.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbasictimer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcoreapplication.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmath.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmetaobject.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmimedata.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobjectcleanuphandler.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpointer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsharedmemory.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsignalmapper.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsocketnotifier.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsystemsemaphore.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtimer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtranslator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qwineventnotifier.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmimedatabase.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmimetype.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfactoryinterface.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlibrary.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qplugin.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpluginloader.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/quuid.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstractstate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstracttransition.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qeventtransition.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfinalstate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qhistorystate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsignaltransition.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstatemachine.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qexception.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfuture.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfutureinterface.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qrunnable.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qresultstore.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfuturesynchronizer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfuturewatcher.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qreadwritelock.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsemaphore.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qthread.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qthreadpool.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qthreadstorage.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qwaitcondition.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qarraydataops.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qarraydatapointer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbitarray.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbytearraymatcher.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcache.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcollator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcommandlineoption.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcommandlineparser.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcryptographichash.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qelapsedtimer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlinkedlist.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmessageauthenticationcode.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qqueue.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qregularexpression.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qscopedvaluerollback.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstack.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtextboundaryfinder.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtimeline.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtimezone.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qxmlstream.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtcoreversion.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsql.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqldatabase.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqldriver.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqldriverplugin.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlerror.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlfield.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlindex.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlrecord.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlquery.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlresult.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlquerymodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlrelationaldelegate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qitemdelegate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractitemdelegate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qstyleoption.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractspinbox.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qvalidator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qicon.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qslider.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractslider.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qstyle.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qtabbar.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qtabwidget.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qrubberband.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qframe.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qlistview.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractitemview.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qcombobox.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlrelationaltablemodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqltablemodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qtsqlversion.h \
+		../vika3/globalconstants.h \
+		../vika3/dialogaddsciconnection.h
+	"C:\Program Files (x86)\QQTT\5.5\mingw492_32\bin\moc.exe" $(DEFINES) -D__GNUC__ -DWIN32 -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/mkspecs/win32-g++" -IC:/Users/LethalValdi/Desktop/Clone/Verklegt3/vika3 -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include" -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include/QtWidgets" -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include/QtGui" -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include/QtANGLE" -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include/QtSql" -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include/QtCore" -I. ..\vika3\dialogaddsciconnection.h -o debug\moc_dialogaddsciconnection.cpp
+
+debug/moc_dialogaddcompconnection.cpp: C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QDialog \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qdialog.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qwidget.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qwindowdefs.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qglobal.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qconfig.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfeatures.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsystemdetection.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qprocessordetection.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcompilerdetection.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtypeinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtypetraits.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsysinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlogging.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qflags.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbasicatomic.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_bootstrap.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qgenericatomic.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_cxx11.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_gcc.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_msvc.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_armv7.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_armv6.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_armv5.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_ia64.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_mips.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_x86.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_unix.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qglobalstatic.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmutex.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qnumeric.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobjectdefs.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qnamespace.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobjectdefs_impl.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qwindowdefs_win.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobject.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstring.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qchar.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbytearray.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qrefcount.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qarraydata.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstringbuilder.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlist.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qalgorithms.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qiterator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbytearraylist.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstringlist.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qregexp.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstringmatcher.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcoreevent.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qscopedpointer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmetatype.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qvarlengtharray.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcontainerfwd.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qisenum.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobject_impl.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmargins.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpaintdevice.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qrect.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsize.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpoint.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpalette.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qcolor.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qrgb.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qbrush.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpair.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qvector.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qmatrix.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpolygon.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qregion.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qdatastream.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qiodevice.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qline.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qtransform.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpainterpath.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qimage.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpixelformat.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpixmap.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsharedpointer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qshareddata.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qhash.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsharedpointer_impl.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qfont.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qfontmetrics.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qfontinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qsizepolicy.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qcursor.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qkeysequence.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qevent.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qvariant.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmap.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qdebug.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtextstream.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlocale.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qset.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcontiguouscache.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qurl.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qurlquery.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfile.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfiledevice.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qvector2d.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qtouchdevice.h \
+		../vika3/People.h \
+		../vika3/individual.h \
+		../vika3/core.h \
+		../vika3/people.h \
+		../vika3/machines.h \
+		../vika3/computer.h \
+		../vika3/sqlitedata.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/QtSql \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/QtSqlDepends \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/QtCore \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/QtCoreDepends \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstractanimation.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qanimationgroup.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qparallelanimationgroup.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpauseanimation.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpropertyanimation.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qvariantanimation.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qeasingcurve.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsequentialanimationgroup.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtextcodec.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qendian.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlibraryinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qdatetime.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbuffer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qdir.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfileinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qdiriterator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfileselector.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/QObject \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/QStringList \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfilesystemwatcher.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlockfile.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qloggingcategory.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qprocess.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qresource.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsavefile.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsettings.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstandardpaths.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstorageinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtemporarydir.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/QScopedPointer \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtemporaryfile.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstractitemmodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstractproxymodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qidentityproxymodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qitemselectionmodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsortfilterproxymodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstringlistmodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qjsonarray.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qjsonvalue.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qjsondocument.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qjsonobject.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstracteventdispatcher.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qeventloop.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstractnativeeventfilter.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbasictimer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcoreapplication.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmath.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmetaobject.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmimedata.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobjectcleanuphandler.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpointer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsharedmemory.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsignalmapper.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsocketnotifier.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsystemsemaphore.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtimer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtranslator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qwineventnotifier.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmimedatabase.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmimetype.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfactoryinterface.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlibrary.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qplugin.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpluginloader.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/quuid.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstractstate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstracttransition.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qeventtransition.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfinalstate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qhistorystate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsignaltransition.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstatemachine.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qexception.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfuture.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfutureinterface.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qrunnable.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qresultstore.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfuturesynchronizer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfuturewatcher.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qreadwritelock.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsemaphore.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qthread.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qthreadpool.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qthreadstorage.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qwaitcondition.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qarraydataops.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qarraydatapointer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbitarray.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbytearraymatcher.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcache.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcollator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcommandlineoption.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcommandlineparser.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcryptographichash.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qelapsedtimer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlinkedlist.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmessageauthenticationcode.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qqueue.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qregularexpression.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qscopedvaluerollback.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstack.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtextboundaryfinder.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtimeline.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtimezone.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qxmlstream.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtcoreversion.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsql.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqldatabase.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqldriver.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqldriverplugin.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlerror.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlfield.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlindex.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlrecord.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlquery.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlresult.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlquerymodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlrelationaldelegate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qitemdelegate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractitemdelegate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qstyleoption.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractspinbox.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qvalidator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qicon.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qslider.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractslider.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qstyle.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qtabbar.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qtabwidget.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qrubberband.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qframe.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qlistview.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractitemview.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qcombobox.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlrelationaltablemodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqltablemodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qtsqlversion.h \
+		../vika3/globalconstants.h \
+		../vika3/dialogaddcompconnection.h
+	"C:\Program Files (x86)\QQTT\5.5\mingw492_32\bin\moc.exe" $(DEFINES) -D__GNUC__ -DWIN32 -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/mkspecs/win32-g++" -IC:/Users/LethalValdi/Desktop/Clone/Verklegt3/vika3 -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include" -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include/QtWidgets" -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include/QtGui" -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include/QtANGLE" -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include/QtSql" -I"C:/Program Files (x86)/QQTT/5.5/mingw492_32/include/QtCore" -I. ..\vika3\dialogaddcompconnection.h -o debug\moc_dialogaddcompconnection.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_dialogaddsci.h ui_dialogeditsci.h ui_dialogaddcom.h
+compiler_uic_make_all: ui_mainwindow.h ui_dialogaddsci.h ui_dialogeditsci.h ui_dialogeditcom.h ui_dialogaddcom.h ui_dialogaddsciconnection.h ui_dialogaddcompconnection.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_dialogaddsci.h ui_dialogeditsci.h ui_dialogaddcom.h
+	-$(DEL_FILE) ui_mainwindow.h ui_dialogaddsci.h ui_dialogeditsci.h ui_dialogeditcom.h ui_dialogaddcom.h ui_dialogaddsciconnection.h ui_dialogaddcompconnection.h
 ui_mainwindow.h: ../vika3/mainwindow.ui
 	"C:\Program Files (x86)\QQTT\5.5\mingw492_32\bin\uic.exe" ..\vika3\mainwindow.ui -o ui_mainwindow.h
 
@@ -897,8 +1537,17 @@ ui_dialogaddsci.h: ../vika3/dialogaddsci.ui
 ui_dialogeditsci.h: ../vika3/dialogeditsci.ui
 	"C:\Program Files (x86)\QQTT\5.5\mingw492_32\bin\uic.exe" ..\vika3\dialogeditsci.ui -o ui_dialogeditsci.h
 
+ui_dialogeditcom.h: ../vika3/dialogeditcom.ui
+	"C:\Program Files (x86)\QQTT\5.5\mingw492_32\bin\uic.exe" ..\vika3\dialogeditcom.ui -o ui_dialogeditcom.h
+
 ui_dialogaddcom.h: ../vika3/dialogaddcom.ui
 	"C:\Program Files (x86)\QQTT\5.5\mingw492_32\bin\uic.exe" ..\vika3\dialogaddcom.ui -o ui_dialogaddcom.h
+
+ui_dialogaddsciconnection.h: ../vika3/dialogaddsciconnection.ui
+	"C:\Program Files (x86)\QQTT\5.5\mingw492_32\bin\uic.exe" ..\vika3\dialogaddsciconnection.ui -o ui_dialogaddsciconnection.h
+
+ui_dialogaddcompconnection.h: ../vika3/dialogaddcompconnection.ui
+	"C:\Program Files (x86)\QQTT\5.5\mingw492_32\bin\uic.exe" ..\vika3\dialogaddcompconnection.ui -o ui_dialogaddcompconnection.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -1176,7 +1825,10 @@ debug/main.o: ../vika3/main.cpp C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/in
 		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QTreeWidget \
 		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qtreewidget.h \
 		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qtreeview.h \
-		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qtreewidgetitemiterator.h
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qtreewidgetitemiterator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QMessageBox \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qmessagebox.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\vika3\main.cpp
 
 debug/mainwindow.o: ../vika3/mainwindow.cpp ../vika3/mainwindow.h \
@@ -1304,6 +1956,9 @@ debug/mainwindow.o: ../vika3/mainwindow.cpp ../vika3/mainwindow.h \
 		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qtabbar.h \
 		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qrubberband.h \
 		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qtreewidgetitemiterator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QMessageBox \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qmessagebox.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qdialog.h \
 		../vika3/core.h \
 		../vika3/people.h \
 		../vika3/individual.h \
@@ -1480,9 +2135,11 @@ debug/mainwindow.o: ../vika3/mainwindow.cpp ../vika3/mainwindow.h \
 		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QWidget \
 		../vika3/dialogaddsci.h \
 		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QDialog \
-		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qdialog.h \
 		../vika3/dialogeditsci.h \
-		../vika3/dialogaddcom.h
+		../vika3/dialogaddcom.h \
+		../vika3/dialogaddcompconnection.h \
+		../vika3/People.h \
+		../vika3/dialogaddsciconnection.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\vika3\mainwindow.cpp
 
 debug/core.o: ../vika3/core.cpp ../vika3/core.h \
@@ -2707,6 +3364,165 @@ debug/dialogeditsci.o: ../vika3/dialogeditsci.cpp ../vika3/dialogeditsci.h \
 		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\dialogeditsci.o ..\vika3\dialogeditsci.cpp
 
+debug/dialogeditcom.o: ../vika3/dialogeditcom.cpp ../vika3/dialogeditcom.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QDialog \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qdialog.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qwidget.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qwindowdefs.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qglobal.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qconfig.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfeatures.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsystemdetection.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qprocessordetection.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcompilerdetection.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtypeinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtypetraits.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsysinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlogging.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qflags.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbasicatomic.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_bootstrap.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qgenericatomic.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_cxx11.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_gcc.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_msvc.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_armv7.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_armv6.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_armv5.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_ia64.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_mips.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_x86.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_unix.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qglobalstatic.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmutex.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qnumeric.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobjectdefs.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qnamespace.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobjectdefs_impl.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qwindowdefs_win.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobject.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstring.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qchar.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbytearray.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qrefcount.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qarraydata.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstringbuilder.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlist.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qalgorithms.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qiterator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbytearraylist.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstringlist.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qregexp.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstringmatcher.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcoreevent.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qscopedpointer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmetatype.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qvarlengtharray.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcontainerfwd.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qisenum.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobject_impl.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmargins.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpaintdevice.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qrect.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsize.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpoint.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpalette.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qcolor.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qrgb.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qbrush.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpair.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qvector.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qmatrix.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpolygon.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qregion.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qdatastream.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qiodevice.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qline.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qtransform.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpainterpath.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qimage.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpixelformat.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpixmap.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsharedpointer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qshareddata.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qhash.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsharedpointer_impl.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qfont.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qfontmetrics.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qfontinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qsizepolicy.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qcursor.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qkeysequence.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qevent.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qvariant.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmap.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qdebug.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtextstream.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlocale.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qset.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcontiguouscache.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qurl.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qurlquery.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfile.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfiledevice.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qvector2d.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qtouchdevice.h \
+		ui_dialogeditcom.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/QVariant \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QAction \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qaction.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qicon.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qactiongroup.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QApplication \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qapplication.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcoreapplication.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qeventloop.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qdesktopwidget.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qguiapplication.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qinputmethod.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QButtonGroup \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qbuttongroup.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QCheckBox \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qcheckbox.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractbutton.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QHBoxLayout \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qboxlayout.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qlayout.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qlayoutitem.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qgridlayout.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QHeaderView \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qheaderview.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractitemview.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qframe.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstractitemmodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qitemselectionmodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractitemdelegate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qstyleoption.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractspinbox.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qvalidator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qregularexpression.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qslider.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractslider.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qstyle.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qtabbar.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qtabwidget.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qrubberband.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QLabel \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qlabel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QLineEdit \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qlineedit.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qtextcursor.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qtextformat.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpen.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qtextoption.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QPushButton \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qpushbutton.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QSpacerItem \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QVBoxLayout
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\dialogeditcom.o ..\vika3\dialogeditcom.cpp
+
 debug/dialogaddcom.o: ../vika3/dialogaddcom.cpp ../vika3/dialogaddcom.h \
 		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QDialog \
 		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qdialog.h \
@@ -2866,6 +3682,569 @@ debug/dialogaddcom.o: ../vika3/dialogaddcom.cpp ../vika3/dialogaddcom.h \
 		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\dialogaddcom.o ..\vika3\dialogaddcom.cpp
 
+debug/dialogaddsciconnection.o: ../vika3/dialogaddsciconnection.cpp ../vika3/dialogaddsciconnection.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QDialog \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qdialog.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qwidget.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qwindowdefs.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qglobal.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qconfig.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfeatures.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsystemdetection.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qprocessordetection.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcompilerdetection.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtypeinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtypetraits.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsysinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlogging.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qflags.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbasicatomic.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_bootstrap.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qgenericatomic.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_cxx11.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_gcc.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_msvc.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_armv7.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_armv6.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_armv5.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_ia64.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_mips.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_x86.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_unix.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qglobalstatic.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmutex.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qnumeric.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobjectdefs.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qnamespace.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobjectdefs_impl.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qwindowdefs_win.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobject.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstring.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qchar.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbytearray.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qrefcount.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qarraydata.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstringbuilder.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlist.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qalgorithms.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qiterator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbytearraylist.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstringlist.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qregexp.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstringmatcher.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcoreevent.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qscopedpointer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmetatype.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qvarlengtharray.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcontainerfwd.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qisenum.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobject_impl.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmargins.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpaintdevice.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qrect.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsize.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpoint.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpalette.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qcolor.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qrgb.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qbrush.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpair.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qvector.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qmatrix.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpolygon.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qregion.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qdatastream.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qiodevice.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qline.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qtransform.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpainterpath.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qimage.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpixelformat.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpixmap.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsharedpointer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qshareddata.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qhash.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsharedpointer_impl.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qfont.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qfontmetrics.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qfontinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qsizepolicy.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qcursor.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qkeysequence.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qevent.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qvariant.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmap.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qdebug.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtextstream.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlocale.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qset.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcontiguouscache.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qurl.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qurlquery.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfile.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfiledevice.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qvector2d.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qtouchdevice.h \
+		../vika3/core.h \
+		../vika3/people.h \
+		../vika3/individual.h \
+		../vika3/machines.h \
+		../vika3/computer.h \
+		../vika3/sqlitedata.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/QtSql \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/QtSqlDepends \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/QtCore \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/QtCoreDepends \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstractanimation.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qanimationgroup.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qparallelanimationgroup.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpauseanimation.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpropertyanimation.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qvariantanimation.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qeasingcurve.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsequentialanimationgroup.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtextcodec.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qendian.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlibraryinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qdatetime.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbuffer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qdir.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfileinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qdiriterator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfileselector.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/QObject \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/QStringList \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfilesystemwatcher.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlockfile.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qloggingcategory.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qprocess.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qresource.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsavefile.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsettings.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstandardpaths.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstorageinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtemporarydir.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/QScopedPointer \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtemporaryfile.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstractitemmodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstractproxymodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qidentityproxymodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qitemselectionmodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsortfilterproxymodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstringlistmodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qjsonarray.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qjsonvalue.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qjsondocument.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qjsonobject.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstracteventdispatcher.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qeventloop.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstractnativeeventfilter.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbasictimer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcoreapplication.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmath.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmetaobject.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmimedata.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobjectcleanuphandler.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpointer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsharedmemory.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsignalmapper.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsocketnotifier.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsystemsemaphore.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtimer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtranslator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qwineventnotifier.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmimedatabase.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmimetype.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfactoryinterface.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlibrary.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qplugin.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpluginloader.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/quuid.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstractstate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstracttransition.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qeventtransition.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfinalstate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qhistorystate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsignaltransition.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstatemachine.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qexception.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfuture.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfutureinterface.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qrunnable.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qresultstore.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfuturesynchronizer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfuturewatcher.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qreadwritelock.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsemaphore.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qthread.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qthreadpool.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qthreadstorage.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qwaitcondition.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qarraydataops.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qarraydatapointer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbitarray.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbytearraymatcher.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcache.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcollator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcommandlineoption.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcommandlineparser.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcryptographichash.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qelapsedtimer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlinkedlist.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmessageauthenticationcode.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qqueue.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qregularexpression.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qscopedvaluerollback.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstack.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtextboundaryfinder.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtimeline.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtimezone.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qxmlstream.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtcoreversion.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsql.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqldatabase.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqldriver.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqldriverplugin.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlerror.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlfield.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlindex.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlrecord.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlquery.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlresult.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlquerymodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlrelationaldelegate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qitemdelegate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractitemdelegate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qstyleoption.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractspinbox.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qvalidator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qicon.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qslider.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractslider.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qstyle.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qtabbar.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qtabwidget.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qrubberband.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qframe.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qlistview.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractitemview.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qcombobox.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlrelationaltablemodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqltablemodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qtsqlversion.h \
+		../vika3/globalconstants.h \
+		ui_dialogaddsciconnection.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/QVariant \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QAction \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qaction.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qactiongroup.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QApplication \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qapplication.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qdesktopwidget.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qguiapplication.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qinputmethod.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QButtonGroup \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qbuttongroup.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QComboBox \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QHBoxLayout \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qboxlayout.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qlayout.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qlayoutitem.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qgridlayout.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QHeaderView \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qheaderview.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QLabel \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qlabel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QPushButton \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qpushbutton.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractbutton.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\dialogaddsciconnection.o ..\vika3\dialogaddsciconnection.cpp
+
+debug/dialogaddcompconnection.o: ../vika3/dialogaddcompconnection.cpp ../vika3/dialogaddcompconnection.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QDialog \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qdialog.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qwidget.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qwindowdefs.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qglobal.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qconfig.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfeatures.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsystemdetection.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qprocessordetection.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcompilerdetection.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtypeinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtypetraits.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsysinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlogging.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qflags.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbasicatomic.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_bootstrap.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qgenericatomic.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_cxx11.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_gcc.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_msvc.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_armv7.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_armv6.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_armv5.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_ia64.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_mips.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_x86.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qatomic_unix.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qglobalstatic.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmutex.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qnumeric.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobjectdefs.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qnamespace.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobjectdefs_impl.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qwindowdefs_win.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobject.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstring.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qchar.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbytearray.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qrefcount.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qarraydata.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstringbuilder.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlist.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qalgorithms.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qiterator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbytearraylist.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstringlist.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qregexp.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstringmatcher.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcoreevent.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qscopedpointer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmetatype.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qvarlengtharray.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcontainerfwd.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qisenum.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobject_impl.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmargins.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpaintdevice.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qrect.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsize.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpoint.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpalette.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qcolor.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qrgb.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qbrush.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpair.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qvector.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qmatrix.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpolygon.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qregion.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qdatastream.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qiodevice.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qline.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qtransform.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpainterpath.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qimage.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpixelformat.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qpixmap.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsharedpointer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qshareddata.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qhash.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsharedpointer_impl.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qfont.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qfontmetrics.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qfontinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qsizepolicy.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qcursor.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qkeysequence.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qevent.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qvariant.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmap.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qdebug.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtextstream.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlocale.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qset.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcontiguouscache.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qurl.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qurlquery.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfile.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfiledevice.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qvector2d.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qtouchdevice.h \
+		../vika3/People.h \
+		../vika3/individual.h \
+		../vika3/core.h \
+		../vika3/people.h \
+		../vika3/machines.h \
+		../vika3/computer.h \
+		../vika3/sqlitedata.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/QtSql \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/QtSqlDepends \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/QtCore \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/QtCoreDepends \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstractanimation.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qanimationgroup.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qparallelanimationgroup.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpauseanimation.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpropertyanimation.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qvariantanimation.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qeasingcurve.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsequentialanimationgroup.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtextcodec.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qendian.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlibraryinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qdatetime.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbuffer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qdir.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfileinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qdiriterator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfileselector.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/QObject \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/QStringList \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfilesystemwatcher.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlockfile.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qloggingcategory.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qprocess.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qresource.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsavefile.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsettings.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstandardpaths.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstorageinfo.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtemporarydir.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/QScopedPointer \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtemporaryfile.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstractitemmodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstractproxymodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qidentityproxymodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qitemselectionmodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsortfilterproxymodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstringlistmodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qjsonarray.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qjsonvalue.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qjsondocument.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qjsonobject.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstracteventdispatcher.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qeventloop.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstractnativeeventfilter.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbasictimer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcoreapplication.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmath.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmetaobject.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmimedata.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qobjectcleanuphandler.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpointer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsharedmemory.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsignalmapper.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsocketnotifier.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsystemsemaphore.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtimer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtranslator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qwineventnotifier.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmimedatabase.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmimetype.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfactoryinterface.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlibrary.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qplugin.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qpluginloader.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/quuid.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstractstate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qabstracttransition.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qeventtransition.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfinalstate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qhistorystate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsignaltransition.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstatemachine.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qexception.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfuture.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfutureinterface.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qrunnable.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qresultstore.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfuturesynchronizer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qfuturewatcher.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qreadwritelock.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qsemaphore.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qthread.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qthreadpool.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qthreadstorage.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qwaitcondition.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qarraydataops.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qarraydatapointer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbitarray.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qbytearraymatcher.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcache.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcollator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcommandlineoption.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcommandlineparser.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qcryptographichash.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qelapsedtimer.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qlinkedlist.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qmessageauthenticationcode.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qqueue.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qregularexpression.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qscopedvaluerollback.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qstack.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtextboundaryfinder.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtimeline.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtimezone.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qxmlstream.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/qtcoreversion.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsql.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqldatabase.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqldriver.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqldriverplugin.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlerror.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlfield.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlindex.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlrecord.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlquery.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlresult.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlquerymodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlrelationaldelegate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qitemdelegate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractitemdelegate.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qstyleoption.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractspinbox.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qvalidator.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qicon.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qslider.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractslider.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qstyle.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qtabbar.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qtabwidget.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qrubberband.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qframe.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qlistview.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractitemview.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qcombobox.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqlrelationaltablemodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qsqltablemodel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtSql/qtsqlversion.h \
+		../vika3/globalconstants.h \
+		ui_dialogaddcompconnection.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtCore/QVariant \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QAction \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qaction.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qactiongroup.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QApplication \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qapplication.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qdesktopwidget.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qguiapplication.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtGui/qinputmethod.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QButtonGroup \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qbuttongroup.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QComboBox \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QHBoxLayout \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qboxlayout.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qlayout.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qlayoutitem.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qgridlayout.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QHeaderView \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qheaderview.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QLabel \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qlabel.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QPushButton \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qpushbutton.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qabstractbutton.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\dialogaddcompconnection.o ..\vika3\dialogaddcompconnection.cpp
+
 debug/moc_mainwindow.o: debug/moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_mainwindow.o debug\moc_mainwindow.cpp
 
@@ -2875,8 +4254,17 @@ debug/moc_dialogaddsci.o: debug/moc_dialogaddsci.cpp
 debug/moc_dialogeditsci.o: debug/moc_dialogeditsci.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_dialogeditsci.o debug\moc_dialogeditsci.cpp
 
+debug/moc_dialogeditcom.o: debug/moc_dialogeditcom.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_dialogeditcom.o debug\moc_dialogeditcom.cpp
+
 debug/moc_dialogaddcom.o: debug/moc_dialogaddcom.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_dialogaddcom.o debug\moc_dialogaddcom.cpp
+
+debug/moc_dialogaddsciconnection.o: debug/moc_dialogaddsciconnection.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_dialogaddsciconnection.o debug\moc_dialogaddsciconnection.cpp
+
+debug/moc_dialogaddcompconnection.o: debug/moc_dialogaddcompconnection.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_dialogaddcompconnection.o debug\moc_dialogaddcompconnection.cpp
 
 ####### Install
 

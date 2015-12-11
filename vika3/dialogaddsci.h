@@ -30,6 +30,7 @@ private slots:
 private:
 
     Ui::DialogAddSci *ui;
+    Core core;
 };
 
 #endif // DIALOGADDSCI_H

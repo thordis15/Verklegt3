@@ -3,6 +3,8 @@
 #include "dialogaddsci.h"
 #include "dialogeditsci.h"
 #include "dialogaddcom.h"
+#include "dialogaddcompconnection.h"
+#include "dialogaddsciconnection.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -12,6 +14,11 @@ MainWindow::MainWindow(QWidget *parent) :
     setTreeSci();
     createDropSearchForComp();
     setTreeComp();
+
+    ui->Button_removeSci->setEnabled(false);
+    ui->Button_removeComp->setEnabled(false);
+
+
 
 }
 
@@ -24,7 +31,6 @@ void MainWindow::searchSciMenu(string search)
 {
    People p1;
    string searching = ui->comboBox_searchSci->currentText().toStdString();
-   bool found;
    if(searching == "Name")
    {
       p1 = core.searchNam(search);
@@ -76,8 +82,9 @@ void MainWindow::searchCompMenu(const string search)
 void MainWindow::setTreeSci()
 {
     ui->treeWidget_sci->clear();
-    ui->treeWidget_sci->setColumnCount(3);
-    ui->treeWidget_sci->setHeaderLabels(QStringList() << "Name" << "Gender" << "Age");
+    ui->treeWidget_sci->setColumnCount(4);
+    ui->treeWidget_sci->setHeaderLabels(QStringList() << "Name" << "Gender" << "Age" << "Id");
+    //ui->treeWidget_sci->setColumnHidden(3, true);
 
     People scientists = core.sortSciAlpabetFront();
 
@@ -90,8 +97,9 @@ void MainWindow::setTreeSci()
 void MainWindow::setTreeSci(People & scientists)
 {
     ui->treeWidget_sci->clear();
-    ui->treeWidget_sci->setColumnCount(3);
-    ui->treeWidget_sci->setHeaderLabels(QStringList() << "Name" << "Gender" << "Age");
+    ui->treeWidget_sci->setColumnCount(4);
+    ui->treeWidget_sci->setHeaderLabels(QStringList() << "Name" << "Gender" << "Age" << "Id");
+    ui->treeWidget_sci->setColumnHidden(3, true);
 
     for(int i = 0; i < scientists.getSize(); i++)
     {
@@ -102,8 +110,9 @@ void MainWindow::setTreeSci(People & scientists)
 void MainWindow::setTreeComp()
 {
     ui->treeWidget_comp->clear();
-    ui->treeWidget_comp->setColumnCount(3);
-    ui->treeWidget_comp->setHeaderLabels(QStringList() << "Name" << "Type" << "Built");
+    ui->treeWidget_comp->setColumnCount(4);
+    ui->treeWidget_comp->setHeaderLabels(QStringList() << "Name" << "Type" << "Built" << "Id");
+    ui->treeWidget_comp->setColumnHidden(3, true);
 
     Machines computers = core.sortCompAlpabetFront();
 
@@ -116,8 +125,9 @@ void MainWindow::setTreeComp()
 void MainWindow::setTreeComp(Machines & computers)
 {
     ui->treeWidget_comp->clear();
-    ui->treeWidget_comp->setColumnCount(3);
-    ui->treeWidget_comp->setHeaderLabels(QStringList() << "Name" << "Type" << "Built");
+    ui->treeWidget_comp->setColumnCount(4);
+    ui->treeWidget_comp->setHeaderLabels(QStringList() << "Name" << "Type" << "Built" << "Id");
+    ui->treeWidget_comp->setColumnHidden(3, true);
 
     for(int i = 0; i < computers.getSize(); i++)
     {
@@ -150,10 +160,12 @@ void MainWindow::addTreeRootSci(Individual scientist)
     age = QString::number(scientist.getBirth()) + " - " + QString::number(scientist.getDeath());
     }
 
+    QString idNumber = QString::number(id);
     QTreeWidgetItem *treeItem = new QTreeWidgetItem(ui->treeWidget_sci);
     treeItem->setText(0, name);
     treeItem->setText(1, gender);
     treeItem->setText(2, age);
+    treeItem->setText(3, idNumber);
 
     for(int i = 0; i < connected.getSize(); i++)
     {
@@ -164,6 +176,7 @@ void MainWindow::addTreeRootSci(Individual scientist)
 void MainWindow::addTreeChildSci(QTreeWidgetItem *parent, Computer computer)
 {
     // QString name, QString type, QString built
+    int id = computer.getId();
     QString name, type, built;
     name = QString::fromStdString(computer.getName());
     type = QString::fromStdString(computer.getType());
@@ -177,10 +190,12 @@ void MainWindow::addTreeChildSci(QTreeWidgetItem *parent, Computer computer)
         built = QString::number(computer.getYear());
     }
 
+    QString idNumber = QString::number(id);
     QTreeWidgetItem *treeItem = new QTreeWidgetItem();
     treeItem->setText(0, name);
     treeItem->setText(1, type);
     treeItem->setText(2, built);
+    treeItem->setText(3, idNumber);
 
     parent->addChild(treeItem);
 }
@@ -204,10 +219,12 @@ void MainWindow::addTreeRootComp(Computer computer)
         built = QString::number(computer.getYear());
     }
 
+    QString idNumber = QString::number(id);
     QTreeWidgetItem *treeItem = new QTreeWidgetItem(ui->treeWidget_comp);
     treeItem->setText(0, name);
     treeItem->setText(1, type);
     treeItem->setText(2, built);
+    treeItem->setText(3, idNumber);
 
     for(int i = 0; i < connected.getSize(); i++)
     {
@@ -217,6 +234,7 @@ void MainWindow::addTreeRootComp(Computer computer)
 
 void MainWindow::addTreeChildComp(QTreeWidgetItem *parent, Individual scientist)
 {
+    int id = scientist.getId();
     // QString name, QString type, QString built
     QString name, gender, age;
 
@@ -239,10 +257,12 @@ void MainWindow::addTreeChildComp(QTreeWidgetItem *parent, Individual scientist)
     age = QString::number(scientist.getBirth()) + " - " + QString::number(scientist.getDeath());
     }
 
+    QString idNumber = QString::number(id);
     QTreeWidgetItem *treeItem = new QTreeWidgetItem();
     treeItem->setText(0, name);
     treeItem->setText(1, gender);
     treeItem->setText(2, age);
+    treeItem->setText(3, idNumber);
 
     parent->addChild(treeItem);
 }
@@ -323,4 +343,124 @@ void MainWindow::on_Button_addComp_clicked()
     DialogAddCom addComWindow;
     addComWindow.setModal(true);
     addComWindow.exec();
+}
+void MainWindow::on_Button_addCompConnection_clicked()
+{
+    DialogAddCompConnection addCompConn;
+    addCompConn.setModal(true);
+    int idsci = addCompConn.exec();
+    QModelIndexList selectedList = ui->treeWidget_comp->selectionModel()->selectedRows();
+    int index;
+    for(int i = 0; i < selectedList.count(); i++)
+    {
+           //QMessageBox::information(this,"", QString::number(selectedList.at(i).row()));
+            index = selectedList.at(i).row();
+    }
+    //þetta er id-ið af manneskjunni í röð ind
+    QString temp = ui->treeWidget_comp->model()->data(ui->treeWidget_comp->model()->index(index, 3)).toString();
+    int idcomp = temp.toInt();
+    core.addConnection(idsci,idcomp);
+    setTreeComp();
+}
+
+void MainWindow::on_Button_addSciConnection_clicked()
+{
+    DialogAddSciConnection addSciConn;
+    addSciConn.setModal(true);
+    int idcomp = addSciConn.exec();
+    QModelIndexList selectedList = ui->treeWidget_sci->selectionModel()->selectedRows();
+    int index;
+    for(int i = 0; i < selectedList.count(); i++)
+    {
+           //QMessageBox::information(this,"", QString::number(selectedList.at(i).row()));
+            index = selectedList.at(i).row();
+    }
+    //þetta er id-ið af manneskjunni í röð ind
+    QString temp = ui->treeWidget_sci->model()->data(ui->treeWidget_sci->model()->index(index, 3)).toString();
+    int idsci = temp.toInt();
+    core.addConnection(idsci,idcomp);
+    setTreeSci();
+}
+void MainWindow::on_Button_removeSci_clicked()
+{
+    ui->Button_removeSci->setEnabled(false);
+
+    QModelIndexList selectedList = ui->treeWidget_sci->selectionModel()->selectedRows();
+
+    int index;
+    for(int i = 0; i < selectedList.count(); i++)
+    {
+        //QMessageBox::information(this,"", QString::number(selectedList.at(i).row()));
+        index = selectedList.at(i).row();
+    }
+
+    //þetta er id-ið af manneskjunni í röð index
+    QString temp = ui->treeWidget_sci->model()->data(ui->treeWidget_sci->model()->index(index, 3)).toString();
+    int id = temp.toInt();
+
+    //messagebox
+    QMessageBox msgBox;
+    msgBox.setText("Removal of a scientist");
+    msgBox.setInformativeText("Are you sure you want to remove scientist with the id " + temp + "?");
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::Cancel);
+    //msgBox.setDefaultButton(QMessageBox::Cancel);  //maybe
+    int ret = msgBox.exec();
+
+    bool removed;   //taka seinna
+
+    switch (ret) {
+        case QMessageBox::Yes:      core.removeIndividual(id, removed);
+                                    setTreeSci();
+                                    break;
+        case QMessageBox::Cancel:   // Cancel was clicked
+                                    break;
+        default:                    // should never be reached
+                                    break;
+    }
+
+}
+
+void MainWindow::on_treeWidget_sci_itemSelectionChanged()
+{
+    ui->Button_removeSci->setEnabled(true);
+}
+
+void MainWindow::on_Button_removeComp_clicked()
+{
+    ui->Button_removeComp->setEnabled(false);
+    QModelIndexList selectedList = ui->treeWidget_comp->selectionModel()->selectedRows();
+
+    int index;
+    for(int i = 0; i < selectedList.count(); i++)
+    {
+        index = selectedList.at(i).row();
+    }
+
+    QString temp = ui->treeWidget_comp->model()->data(ui->treeWidget_comp->model()->index(index, 3)).toString();
+    int id = temp.toInt();
+    // The Id of the computer in row 'index' of table
+
+    QMessageBox msgBox;
+    msgBox.setText("Removal of a scomputer");
+    msgBox.setInformativeText("Are you sure you want to remove the computer with the id " + temp + "?");
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::Cancel);
+    int ret = msgBox.exec();
+    // Messagebox asks if user wants to remove or not
+
+    bool removed;
+
+    switch (ret) {
+        case QMessageBox::Yes:      core.removeComputer(id, removed);
+                                    setTreeComp();
+                                    break;
+        case QMessageBox::Cancel:   // Cancel was clicked
+                                    break;
+        default:                    // should never be reached
+                                    break;
+    }
+}
+
+void MainWindow::on_treeWidget_comp_itemSelectionChanged()
+{
+    ui->Button_removeComp->setEnabled(true);
 }

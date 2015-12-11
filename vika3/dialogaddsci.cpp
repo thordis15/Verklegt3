@@ -43,7 +43,7 @@ void DialogAddSci::on_confirmAddButton_clicked()
         // Error
        // return;
     }
-    //core.addIndividual(i1,found);
+    core.addIndividual(i1,found);
 }
 
 
