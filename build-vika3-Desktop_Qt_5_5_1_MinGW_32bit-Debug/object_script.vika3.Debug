@@ -9,6 +9,8 @@ INPUT(
 ./debug\computer.o
 ./debug\machines.o
 ./debug\dialogaddsci.o
+./debug\dialogeditsci.o
 ./debug\moc_mainwindow.o
 ./debug\moc_dialogaddsci.o
+./debug\moc_dialogeditsci.o
 );
