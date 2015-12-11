@@ -6,9 +6,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->SelectingDatabase->addItem("<No database selected>");
-    ui->SelectingDatabase->addItem("Scientists");
-    ui->SelectingDatabase->addItem("Computers");
+    //ui->SelectingDatabase->addItem("<No database selected>");
+    //ui->SelectingDatabase->addItem("Scientists");
+    //ui->SelectingDatabase->addItem("Computers");
 
     setTreeSci();
     setTreeComp();
@@ -21,42 +21,42 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::displayScientists(const People& p1)
-{
+{/*
    ui->ViewList->clear();
    for(int i =0 ;i <p1.getSize();i++)
    {
-       ui->ViewList->addItem(QString::fromStdString(p1.getIndi(i).getSurname()));
+      ui->ViewList->addItem(QString::fromStdString(p1.getIndi(i).getSurname()));
    }
-
+*/
 }
 
 void MainWindow::displayComputers(const Machines& c1)
 {
-    ui->ViewList->clear();
+/*    ui->ViewList->clear();
     for(int i =0 ;i <c1.getSize();i++)
     {
         ui->ViewList->addItem(QString::fromStdString(c1.getComputer(i).getName()));
-    }
+    }*/
 }
 
 void MainWindow::createDropSortForSci()
-{
+{/*
     ui->sortByDrop->clear();
     ui->sortByDrop->addItem("<Nothing selected>");
     ui->sortByDrop->addItem("Name ascending");
     ui->sortByDrop->addItem("Name decending");
     ui->sortByDrop->addItem("Birth year");
-    ui->sortByDrop->addItem("Year of death");
+    ui->sortByDrop->addItem("Year of death");*/
 }
 
 void MainWindow::createDropSortForComp()
 {
-    ui->sortByDrop->clear();
+    /*ui->sortByDrop->clear();
     ui->sortByDrop->addItem("<Nothing selected>");
     ui->sortByDrop->addItem("Name ascending");
     ui->sortByDrop->addItem("Name decending");
     ui->sortByDrop->addItem("Type");
-    ui->sortByDrop->addItem("Year of creation");
+    ui->sortByDrop->addItem("Year of creation");*/
 }
 
 void MainWindow::sortSci(const string sorting)
@@ -281,6 +281,6 @@ void MainWindow::on_SelectingDatabase_activated(const QString &arg1)
 
 void MainWindow::on_sortByDrop_activated()
 {
-    string sortsel = ui->sortByDrop->currentText().toStdString();
-    sortSci(sortsel);
+    /*string sortsel = ui->sortByDrop->currentText().toStdString();
+    sortSci(sortsel);*/
 }
