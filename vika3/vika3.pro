@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     sqlitedata.cpp \
     computer.cpp \
     machines.cpp \
-    dialogaddsci.cpp
+    dialogaddsci.cpp \
+    dialogeditsci.cpp
 
 HEADERS  += mainwindow.h \
     core.h \
@@ -33,7 +34,9 @@ HEADERS  += mainwindow.h \
     sqlitedata.h \
     computer.h \
     machines.h \
-    dialogaddsci.h
+    dialogaddsci.h \
+    dialogeditsci.h
 
 FORMS    += mainwindow.ui \
-    dialogaddsci.ui
+    dialogaddsci.ui \
+    dialogeditsci.ui
