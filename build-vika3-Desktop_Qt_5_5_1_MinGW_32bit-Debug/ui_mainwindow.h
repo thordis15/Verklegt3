@@ -34,7 +34,7 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QVBoxLayout *verticalLayout_3;
+    QHBoxLayout *horizontalLayout_5;
     QTabWidget *tabWidget;
     QWidget *tab_sci;
     QVBoxLayout *verticalLayout_5;
@@ -73,10 +73,10 @@ public:
         MainWindow->resize(658, 568);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        verticalLayout_3 = new QVBoxLayout(centralWidget);
-        verticalLayout_3->setSpacing(6);
-        verticalLayout_3->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        horizontalLayout_5 = new QHBoxLayout(centralWidget);
+        horizontalLayout_5->setSpacing(6);
+        horizontalLayout_5->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
         tabWidget = new QTabWidget(centralWidget);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
         tab_sci = new QWidget();
@@ -106,6 +106,7 @@ public:
 
         lineEdit_searchSci = new QLineEdit(tab_sci);
         lineEdit_searchSci->setObjectName(QStringLiteral("lineEdit_searchSci"));
+        lineEdit_searchSci->setEnabled(false);
 
         verticalLayout_4->addWidget(lineEdit_searchSci);
 
@@ -220,12 +221,12 @@ public:
 
         tabWidget->addTab(tab_comp, QString());
 
-        verticalLayout_3->addWidget(tabWidget);
+        horizontalLayout_5->addWidget(tabWidget);
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 658, 26));
+        menuBar->setGeometry(QRect(0, 0, 658, 21));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -237,7 +238,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -246,13 +247,13 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
-        label_searchSci->setText(QApplication::translate("MainWindow", "TextLabel", 0));
+        label_searchSci->setText(QApplication::translate("MainWindow", "Search by:", 0));
         Button_addSci->setText(QApplication::translate("MainWindow", "Add Scientist", 0));
         Button_editSci->setText(QApplication::translate("MainWindow", "Edit Scientist", 0));
         Button_removeSci->setText(QApplication::translate("MainWindow", "Remove", 0));
         Button_addSciConnection->setText(QApplication::translate("MainWindow", "Add Connection", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_sci), QApplication::translate("MainWindow", "Scientists", 0));
-        label_searchComp->setText(QApplication::translate("MainWindow", "TextLabel", 0));
+        label_searchComp->setText(QApplication::translate("MainWindow", "Search by:", 0));
         Button_addComp->setText(QApplication::translate("MainWindow", "Add Computer", 0));
         Button_editComp->setText(QApplication::translate("MainWindow", "Edit Computer", 0));
         Button_removeComp->setText(QApplication::translate("MainWindow", "Remove", 0));

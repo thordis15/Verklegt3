@@ -1,0 +1,16 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\core.o
+./release\ui.o
+./release\individual.o
+./release\people.o
+./release\sqlitedata.o
+./release\computer.o
+./release\machines.o
+./release\dialogaddsci.o
+./release\dialogeditsci.o
+./release\moc_mainwindow.o
+./release\moc_dialogaddsci.o
+./release\moc_dialogeditsci.o
+);

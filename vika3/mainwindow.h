@@ -24,8 +24,16 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_SelectingDatabase_activated(const QString &arg1);
-    void on_sortByDrop_activated();
+
+    void on_tabWidget_tabBarClicked(int index);
+
+    void on_lineEdit_searchSci_textChanged(const QString &arg1);
+
+    void on_comboBox_searchSci_currentIndexChanged(const QString &arg1);
+
+    void on_lineEdit_searchComp_textChanged(const QString &arg1);
+
+    void on_comboBox_searchComp_currentIndexChanged(const QString &arg1);
 
     void on_Button_addSci_clicked();
 
@@ -34,12 +42,10 @@ private slots:
 private:
     Ui::MainWindow *ui;
     Core core;
-    void displayScientists(const People& p1);
-    void displayComputers(const Machines& c1);
-    void createDropSortForSci();
-    void createDropSortForComp();
-    void sortSci(const string sorting);
-    void sortComp(const string sorting);
+    void searchSciMenu(const string search);
+    void searchCompMenu(const string search);
+    void createDropSearchForSci();
+    void createDropSearchForComp();
 
     void setTreeSci();
     void setTreeSci(People& scientists);

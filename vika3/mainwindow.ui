@@ -14,11 +14,11 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout_3">
+   <layout class="QHBoxLayout" name="horizontalLayout_5">
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_sci">
        <attribute name="title">
@@ -32,7 +32,7 @@
             <item>
              <widget class="QLabel" name="label_searchSci">
               <property name="text">
-               <string>TextLabel</string>
+               <string>Search by:</string>
               </property>
              </widget>
             </item>
@@ -42,7 +42,11 @@
            </layout>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_searchSci"/>
+           <widget class="QLineEdit" name="lineEdit_searchSci">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QTreeWidget" name="treeWidget_sci">
@@ -107,7 +111,7 @@
             <item>
              <widget class="QLabel" name="label_searchComp">
               <property name="text">
-               <string>TextLabel</string>
+               <string>Search by:</string>
               </property>
              </widget>
             </item>
@@ -180,7 +184,7 @@
      <x>0</x>
      <y>0</y>
      <width>658</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

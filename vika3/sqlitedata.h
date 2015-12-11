@@ -35,13 +35,13 @@ public:
     // Returns a machine vector where the elements have been sorted
 
     People searchIndiByName(const string name);
-    People searchIndiByByear(const int year, bool& found);
-    People searchIndiByDyear(const int year, bool& found);
+    People searchIndiByByear(const int year);
+    People searchIndiByDyear(const int year);
     People searchIndiByGender(const char gender);
     // Returns a people vector of individuals(scientists) containing elements that fit the search criteria
 
     Machines searchCompByName(const string name);
-    Machines searchCompByByear(const int year, bool& found);
+    Machines searchCompByByear(const int year);
     Machines searchCompByType(const string type);
     // Return a machines vector of computers containing elements that fit the search criteria
 
