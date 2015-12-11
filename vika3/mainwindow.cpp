@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include "dialogaddsci.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -283,4 +283,11 @@ void MainWindow::on_sortByDrop_activated()
 {
     /*string sortsel = ui->sortByDrop->currentText().toStdString();
     sortSci(sortsel);*/
+}
+
+void MainWindow::on_Button_addSci_clicked()
+{
+   DialogAddSci addSciWindow;
+   addSciWindow.setModal(true);
+   addSciWindow.exec();
 }

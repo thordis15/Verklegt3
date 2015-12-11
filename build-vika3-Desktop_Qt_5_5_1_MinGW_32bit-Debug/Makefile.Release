@@ -1097,7 +1097,10 @@ release/mainwindow.o: ../vika3/mainwindow.cpp ../vika3/mainwindow.h \
 		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QToolBar \
 		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qtoolbar.h \
 		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QVBoxLayout \
-		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QWidget
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QWidget \
+		../vika3/dialogaddsci.h \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/QDialog \
+		C:/Program\ Files\ (x86)/QQTT/5.5/mingw492_32/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\vika3\mainwindow.cpp
 
 release/core.o: ../vika3/core.cpp ../vika3/core.h \

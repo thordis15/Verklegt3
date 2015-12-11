@@ -27,6 +27,8 @@ private slots:
     void on_SelectingDatabase_activated(const QString &arg1);
     void on_sortByDrop_activated();
 
+    void on_Button_addSci_clicked();
+
 private:
     Ui::MainWindow *ui;
     Core core;
