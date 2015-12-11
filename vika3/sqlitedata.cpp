@@ -35,19 +35,17 @@ People SQLiteData::sortIndiByDYear()
     return p1;
 }
 
-People SQLiteData::searchIndiByByear(const int year, bool& found)
+People SQLiteData::searchIndiByByear(const int year)
 {
     string Query1 = selectAllSci + " " + searchbYear + intToString(year);
-    string Query2 = selectAllSci + " " + searchbYearFrom + intToString(year-6) + " " + searchbYearTo + intToString(year+6);
-    People p1 = doQuerySciOrOther(Query1, Query2, found);
+    People p1 = doQuerySci(Query1);
     return p1;
 }
 
-People SQLiteData::searchIndiByDyear(const int year, bool& found)
+People SQLiteData::searchIndiByDyear(const int year)
 {
     string Query1 = selectAllSci + " " + searchdYear + intToString(year);
-    string Query2 = selectAllSci + " " + searchdYearFrom + intToString(year-6) + " " + searchdYearTo + intToString(year+6);
-    People p1 = doQuerySciOrOther(Query1, Query2, found);
+    People p1 = doQuerySci(Query1);
     return p1;
 }
 
@@ -155,11 +153,10 @@ Machines SQLiteData::searchCompByName(const string name)
     return p1;
 }
 
-Machines SQLiteData::searchCompByByear(const int year, bool& found)
+Machines SQLiteData::searchCompByByear(const int year)
 {
     string Query1 = selectAllComp + " " + searchbYear + intToString(year);
-    string Query2 = selectAllComp + " " + searchbYearFrom + intToString(year-6) + " " + searchbYearTo + intToString(year+6);
-    Machines p1 = doQueryCompOrOther(Query1, Query2, found);
+    Machines p1 = doQueryComp(Query1);
     return p1;
 }
 

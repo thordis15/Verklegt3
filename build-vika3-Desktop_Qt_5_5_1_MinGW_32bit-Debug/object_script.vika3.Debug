@@ -11,8 +11,10 @@ INPUT(
 ./debug\dialogaddsci.o
 ./debug\dialogeditsci.o
 ./debug\dialogeditcom.o
+./debug\dialogaddcom.o
 ./debug\moc_mainwindow.o
 ./debug\moc_dialogaddsci.o
 ./debug\moc_dialogeditsci.o
 ./debug\moc_dialogeditcom.o
+./debug\moc_dialogaddcom.o
 );

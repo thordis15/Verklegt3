@@ -151,9 +151,9 @@ Machines Core::searchComType(string searchStr)
     return newdata.searchCompByType(searchStr);
 }
 
-Machines Core::searchComYear(bool& found, int ansYear)
+Machines Core::searchComYear(int ansYear)
 {
-    return newdata.searchCompByByear(ansYear, found);
+    return newdata.searchCompByByear(ansYear);
 }
 
 People Core::searchNam(string searchStr)
@@ -166,14 +166,14 @@ People Core::searchGend(const char ansGender)
     return newdata.searchIndiByGender(ansGender);
 }
 
-People Core::searchBir(bool& found, int ansYear)
+People Core::searchBir(int ansYear)
 {
-    return newdata.searchIndiByByear(ansYear, found);
+    return newdata.searchIndiByByear(ansYear);
 }
 
-People Core::searchDea(bool& found, int ansYear)
+People Core::searchDea(int ansYear)
 {
-    return newdata.searchIndiByDyear(ansYear, found);
+    return newdata.searchIndiByDyear(ansYear);
 }
 
 string Core::getSurname(int i) const

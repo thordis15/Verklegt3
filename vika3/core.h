@@ -48,13 +48,13 @@ public:
     People searchGend(char ansGender);
     People searchNam(string searchStr);
     People searchGend(bool& found, char ansGender, People& result);
-    People searchBir(bool& found, int ansYear);
-    People searchDea(bool& found, int ansYear);
+    People searchBir(int ansYear);
+    People searchDea(int ansYear);
     // Functions used to search for Individuals in database with specific traits
 
     Machines searchComName(string searchStr);
     Machines searchComType(string searchStr);
-    Machines searchComYear(bool& found, int ansYear);
+    Machines searchComYear(int ansYear);
     // Functions used to search for Computers in database with specific traits
 
     Machines sortCompAlpabetFront();
