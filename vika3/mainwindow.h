@@ -41,6 +41,10 @@ private slots:
 
     void on_Button_editSci_clicked();
 
+    void on_Button_addComp_clicked();
+    void on_Button_addCompConnection_clicked();
+
+    void on_Button_addSciConnection_clicked();
     void on_Button_removeSci_clicked();
 
     void on_treeWidget_sci_itemSelectionChanged();

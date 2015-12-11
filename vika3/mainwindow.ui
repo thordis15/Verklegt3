@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_sci">
        <attribute name="title">
@@ -109,6 +109,21 @@
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>
+             <widget class="QTreeWidget" name="treeWidget_comp">
+              <property name="alternatingRowColors">
+               <bool>true</bool>
+              </property>
+              <property name="sortingEnabled">
+               <bool>true</bool>
+              </property>
+              <column>
+               <property name="text">
+                <string notr="true">1</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+            <item>
              <widget class="QLabel" name="label_searchComp">
               <property name="text">
                <string>Search by:</string>
@@ -122,21 +137,6 @@
           </item>
           <item>
            <widget class="QLineEdit" name="lineEdit_searchComp"/>
-          </item>
-          <item>
-           <widget class="QTreeWidget" name="treeWidget_comp">
-            <property name="alternatingRowColors">
-             <bool>true</bool>
-            </property>
-            <property name="sortingEnabled">
-             <bool>true</bool>
-            </property>
-            <column>
-             <property name="text">
-              <string notr="true">1</string>
-             </property>
-            </column>
-           </widget>
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout">
@@ -184,7 +184,11 @@
      <x>0</x>
      <y>0</y>
      <width>658</width>
+<<<<<<< HEAD
+     <height>26</height>
+=======
      <height>22</height>
+>>>>>>> 6e38376a44b8456b36d0b8f355a48cc0929cfca4
     </rect>
    </property>
   </widget>

@@ -2,6 +2,9 @@
 #include "ui_mainwindow.h"
 #include "dialogaddsci.h"
 #include "dialogeditsci.h"
+#include "dialogaddcom.h"
+#include "dialogaddcompconnection.h"
+#include "dialogaddsciconnection.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -28,7 +31,6 @@ void MainWindow::searchSciMenu(string search)
 {
    People p1;
    string searching = ui->comboBox_searchSci->currentText().toStdString();
-   bool found;
    if(searching == "Name")
    {
       p1 = core.searchNam(search);
@@ -323,6 +325,9 @@ void MainWindow::on_Button_addSci_clicked()
    DialogAddSci addSciWindow;
    addSciWindow.setModal(true);
    addSciWindow.exec();
+   setTreeSci();
+
+
 }
 
 void MainWindow::on_Button_editSci_clicked()
@@ -332,6 +337,50 @@ void MainWindow::on_Button_editSci_clicked()
     editSciWindow.exec();
 }
 
+
+void MainWindow::on_Button_addComp_clicked()
+{
+    DialogAddCom addComWindow;
+    addComWindow.setModal(true);
+    addComWindow.exec();
+}
+void MainWindow::on_Button_addCompConnection_clicked()
+{
+    DialogAddCompConnection addCompConn;
+    addCompConn.setModal(true);
+    int idsci = addCompConn.exec();
+    QModelIndexList selectedList = ui->treeWidget_comp->selectionModel()->selectedRows();
+    int index;
+    for(int i = 0; i < selectedList.count(); i++)
+    {
+           //QMessageBox::information(this,"", QString::number(selectedList.at(i).row()));
+            index = selectedList.at(i).row();
+    }
+    //þetta er id-ið af manneskjunni í röð ind
+    QString temp = ui->treeWidget_comp->model()->data(ui->treeWidget_comp->model()->index(index, 3)).toString();
+    int idcomp = temp.toInt();
+    core.addConnection(idsci,idcomp);
+    setTreeComp();
+}
+
+void MainWindow::on_Button_addSciConnection_clicked()
+{
+    DialogAddSciConnection addSciConn;
+    addSciConn.setModal(true);
+    int idcomp = addSciConn.exec();
+    QModelIndexList selectedList = ui->treeWidget_sci->selectionModel()->selectedRows();
+    int index;
+    for(int i = 0; i < selectedList.count(); i++)
+    {
+           //QMessageBox::information(this,"", QString::number(selectedList.at(i).row()));
+            index = selectedList.at(i).row();
+    }
+    //þetta er id-ið af manneskjunni í röð ind
+    QString temp = ui->treeWidget_sci->model()->data(ui->treeWidget_sci->model()->index(index, 3)).toString();
+    int idsci = temp.toInt();
+    core.addConnection(idsci,idcomp);
+    setTreeSci();
+}
 void MainWindow::on_Button_removeSci_clicked()
 {
     ui->Button_removeSci->setEnabled(false);

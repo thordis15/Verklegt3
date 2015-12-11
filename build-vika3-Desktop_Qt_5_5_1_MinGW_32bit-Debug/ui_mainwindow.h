@@ -53,10 +53,10 @@ public:
     QVBoxLayout *verticalLayout_2;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_2;
+    QTreeWidget *treeWidget_comp;
     QLabel *label_searchComp;
     QComboBox *comboBox_searchComp;
     QLineEdit *lineEdit_searchComp;
-    QTreeWidget *treeWidget_comp;
     QHBoxLayout *horizontalLayout;
     QPushButton *Button_addComp;
     QPushButton *Button_editComp;
@@ -162,6 +162,16 @@ public:
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        treeWidget_comp = new QTreeWidget(tab_comp);
+        QTreeWidgetItem *__qtreewidgetitem1 = new QTreeWidgetItem();
+        __qtreewidgetitem1->setText(0, QStringLiteral("1"));
+        treeWidget_comp->setHeaderItem(__qtreewidgetitem1);
+        treeWidget_comp->setObjectName(QStringLiteral("treeWidget_comp"));
+        treeWidget_comp->setAlternatingRowColors(true);
+        treeWidget_comp->setSortingEnabled(true);
+
+        horizontalLayout_2->addWidget(treeWidget_comp);
+
         label_searchComp = new QLabel(tab_comp);
         label_searchComp->setObjectName(QStringLiteral("label_searchComp"));
 
@@ -179,16 +189,6 @@ public:
         lineEdit_searchComp->setObjectName(QStringLiteral("lineEdit_searchComp"));
 
         verticalLayout->addWidget(lineEdit_searchComp);
-
-        treeWidget_comp = new QTreeWidget(tab_comp);
-        QTreeWidgetItem *__qtreewidgetitem1 = new QTreeWidgetItem();
-        __qtreewidgetitem1->setText(0, QStringLiteral("1"));
-        treeWidget_comp->setHeaderItem(__qtreewidgetitem1);
-        treeWidget_comp->setObjectName(QStringLiteral("treeWidget_comp"));
-        treeWidget_comp->setAlternatingRowColors(true);
-        treeWidget_comp->setSortingEnabled(true);
-
-        verticalLayout->addWidget(treeWidget_comp);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
@@ -226,7 +226,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 658, 21));
+        menuBar->setGeometry(QRect(0, 0, 658, 26));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -238,7 +238,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

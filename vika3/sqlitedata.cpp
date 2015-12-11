@@ -2,9 +2,7 @@
 
 SQLiteData::SQLiteData()
 {
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString dbName = "ScientistsComputers.sqlite";
-    db.setDatabaseName(dbName);
+
 }
 
 People SQLiteData::sortIndiAlphaFront()
@@ -281,7 +279,7 @@ void SQLiteData::addNewComp(const Computer c1, bool& found)
 
 Machines SQLiteData::doQueryComp(const string que)
 {
-    db.open();
+    QSqlDatabase db = getDatabase();
     QString Q = QString::fromStdString(que);
     QSqlQuery queryname(db);
     queryname.exec(Q);
@@ -301,7 +299,7 @@ Machines SQLiteData::doQueryComp(const string que)
 
 People SQLiteData::doQuerySci(const string que)
 {
-    db.open();
+    QSqlDatabase db = getDatabase();
     QString Q = QString::fromStdString(que);
     QSqlQuery queryname(db);
     queryname.exec(Q);
@@ -323,7 +321,7 @@ People SQLiteData::doQuerySci(const string que)
 
 People SQLiteData::doQuerySciOrOther(const string que1, const string que2, bool& found)
 {
-    db.open();
+    QSqlDatabase db = getDatabase();
     QString Q = QString::fromStdString(que1);
     QSqlQuery queryname(db);
     queryname.exec(Q);
@@ -365,7 +363,7 @@ People SQLiteData::doQuerySciOrOther(const string que1, const string que2, bool&
 
 Machines SQLiteData::doQueryCompOrOther(const string que1, const string que2, bool& found)
 {
-    db.open();
+    QSqlDatabase db = getDatabase();
     QString Q = QString::fromStdString(que1);
     QSqlQuery queryname(db);
     queryname.exec(Q);
@@ -403,7 +401,7 @@ Machines SQLiteData::doQueryCompOrOther(const string que1, const string que2, bo
 
 void SQLiteData::executeQuery(const string query)
 {
-    db.open();
+    QSqlDatabase db = getDatabase();
     QString Q = QString::fromStdString(query);
     QSqlQuery queryname(db);
     queryname.exec(Q);
@@ -415,7 +413,7 @@ vector<int> SQLiteData::getRelationsToComp(const int i)
     querystring = querystring + intToString(i) + " AND s.deleted = 0";
     vector<int> temp;
 
-    db.open();
+    QSqlDatabase db = getDatabase();
     QSqlQuery queryname(db);
     queryname.exec(QString::fromStdString(querystring));
 
@@ -434,7 +432,7 @@ vector<int> SQLiteData::getRelationsToSci(const int i)
     querystring = querystring + intToString(i) + " AND s.deleted = 0";
     vector<int> temp;
 
-    db.open();
+    QSqlDatabase db = getDatabase();
     QSqlQuery queryname(db);
     queryname.exec(QString::fromStdString(querystring));
 
@@ -494,7 +492,6 @@ Individual SQLiteData::getSingleIndi(const int i)
     People p1 = doQuerySci(Query);
     Individual temp = p1.getIndi(0);
 
-    db.close();
     return temp;
 }
 
@@ -504,7 +501,6 @@ Computer SQLiteData::getSingleComp(const int i)
     Machines c1 = doQueryComp(Query);
     Computer temp = c1.getComputer(0);
 
-    db.close();
     return temp;
 }
 
@@ -512,7 +508,7 @@ int SQLiteData::getDatabaseSize(const string temp)
 {
     string que = selectCount + " " + temp + " " + findNotDel;
 
-    db.open();
+    QSqlDatabase db = getDatabase();
     QString Q = QString::fromStdString(que);
     QSqlQuery queryname(db);
     queryname.exec(Q);
@@ -545,4 +541,25 @@ bool SQLiteData::searchForId(const int id, const string tablename)
         return true;
     }
     return false;
+}
+ QSqlDatabase SQLiteData::getDatabase()
+{
+
+     QString connectionName = "ScientistsComputers.sqlite";
+
+     QSqlDatabase db;
+
+     if(QSqlDatabase::contains(connectionName))
+     {
+         db = QSqlDatabase::database(connectionName);
+     }
+     else
+     {
+         db = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+         db.setDatabaseName("ScientistsComputers.sqlite");
+
+         db.open();
+     }
+
+     return db;
 }
