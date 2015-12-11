@@ -39,6 +39,8 @@ private slots:
 
     void on_Button_editSci_clicked();
 
+    void on_Button_addComp_clicked();
+
 private:
     Ui::MainWindow *ui;
     Core core;

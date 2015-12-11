@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "dialogaddsci.h"
 #include "dialogeditsci.h"
+#include "dialogaddcom.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -304,6 +305,9 @@ void MainWindow::on_Button_addSci_clicked()
    DialogAddSci addSciWindow;
    addSciWindow.setModal(true);
    addSciWindow.exec();
+   setTreeSci();
+
+
 }
 
 void MainWindow::on_Button_editSci_clicked()
@@ -311,4 +315,12 @@ void MainWindow::on_Button_editSci_clicked()
     DialogEditSci editSciWindow;
     editSciWindow.setModal(true);
     editSciWindow.exec();
+}
+
+
+void MainWindow::on_Button_addComp_clicked()
+{
+    DialogAddCom addComWindow;
+    addComWindow.setModal(true);
+    addComWindow.exec();
 }
